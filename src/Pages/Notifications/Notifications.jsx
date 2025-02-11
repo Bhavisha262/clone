@@ -87,7 +87,7 @@ const Notifications = () => {
 
       {/* Company Card */}
       <div className="company-card">
-        <h3>LinkedIn Company</h3>
+        <h3>JobedIn Company</h3>
         <p>Follow our company page for updates</p>
         <button>Follow</button>
       </div>
