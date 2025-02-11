@@ -38,12 +38,12 @@ const Notifications = () => {
   return (
     <div className="notification-page">
       {/* Header Area */}
-      <div className="header">
-        <div className="profile-card">
-          <img src="https://via.placeholder.com/50" alt="Profile" />
+      <div className="header1">
+        <div className="profile-card1">
+          <img src="https://xsgames.co/randomusers/assets/avatars/female/21.jpg" alt="Profile" />
           <div className="profile-info">
-            <h2>John Doe</h2>
-            <p>Frontend Developer</p>
+            <h2>Sienna Johnson</h2>
+            <p>Senior Full Stack Developer</p>
           </div>
         </div>
         <div className="manage-notifications-card">
