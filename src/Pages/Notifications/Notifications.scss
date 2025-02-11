@@ -1,0 +1,174 @@
+.notification-page {
+  font-family: "Nunito", serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #333;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-family: "Nunito", serif;
+
+    .profile-card {
+      display: flex;
+      align-items: center;
+      font-family: "Nunito", serif;
+
+      img {
+        border-radius: 50%;
+        margin-right: 10px;
+        width: 50px;
+        height: 50px;
+        transition: transform 0.3s ease;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+
+      .profile-info {
+        h2 {
+          margin: 0;
+          font-size: 18px;
+          color: #0073b1;
+          font-family: "Nunito", serif; // LinkedIn blue
+        }
+        p {
+          margin: 0;
+          font-size: 14px;
+          color: #666;
+          font-family: "Nunito", serif;
+        }
+      }
+    }
+
+    .manage-notifications-card {
+      font-family: "Nunito", serif;
+      button {
+        background-color: #0073b1;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-family: "Nunito", serif;
+        transition: background-color 0.3s ease;
+        &:hover {
+          background-color: #005582;
+        }
+      }
+    }
+  }
+
+  .tabs {
+    display: flex;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 20px;
+    font-family: "Nunito", serif;
+
+    .tab {
+      margin-right: 20px;
+      padding-bottom: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #555;
+      font-family: "Nunito", serif;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+
+      &:hover {
+        color: #0073b1;
+      }
+
+      &.active {
+        color: #0073b1;
+        border-bottom: 2px solid #0073b1;
+      }
+    }
+  }
+
+  .notifications-list {
+    font-family: "Nunito", serif;
+    .loader {
+      text-align: center;
+      font-size: 16px;
+      color: #999;
+      padding: 20px 0;
+    }
+
+    .notification-item {
+      display: flex;
+      padding: 15px;
+      background-color: #f9f9f9;
+      margin-bottom: 10px;
+      font-family: "Nunito", serif;
+      border-radius: 8px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s forwards;
+
+      img {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+      }
+
+      .notification-content {
+        p {
+          margin: 0;
+          font-size: 14px;
+          color: #333;
+          font-family: "Nunito", serif;
+        }
+        .time {
+          font-size: 12px;
+          color: #aaa;
+        }
+      }
+    }
+  }
+
+  .company-card {
+    background-color: #eef3f8;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: "Nunito", serif;
+    text-align: center;
+    margin-top: 20px;
+
+    h3 {
+      margin-top: 0;
+      color: #0073b1;
+      font-family: "Nunito", serif;
+    }
+
+    p {
+      font-size: 14px;
+      color: #666;
+      font-family: "Nunito", serif;
+    }
+
+    button {
+      background-color: #0073b1;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-family: "Nunito", serif;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      &:hover {
+        background-color: #005582;
+      }
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

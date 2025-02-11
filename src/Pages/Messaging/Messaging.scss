@@ -1,0 +1,233 @@
+// Variables for colors, spacing, and timing
+$primary-color: #0073b1;
+$secondary-color: #666;
+$border-color: #e0e0e0;
+$bg-color: #fafafa;
+$light-bg: #fff;
+$text-color: #555;
+$transition-speed: 0.3s;
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+// Container to center the messaging card
+.messaging-container {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: "Nunito", serif;
+}
+
+// Messaging Card with smooth fade‑in animation and hover effect
+.messaging-card {
+  width: 100%;
+  padding: 20px;
+  background-color: $light-bg;
+  border-radius: 8px;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease-in-out;
+  margin: 10px;
+  font-family: "Nunito", serif;
+  transition: transform $transition-speed ease;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+// Fade‑in keyframes
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Header with search input and icons
+.messaging-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid $border-color;
+  font-family: "Nunito", serif;
+
+  input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: "Nunito", serif;
+    outline: none;
+    transition: border-color $transition-speed, box-shadow $transition-speed;
+
+    &:focus {
+      border-color: $primary-color;
+      font-family: "Nunito", serif;
+      box-shadow: 0 0 5px rgba($primary-color, 0.5);
+    }
+  }
+}
+
+// Header icons container and individual icon styles
+.header-icons {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: "Nunito", serif;
+    color: $secondary-color;
+    margin-left: 5px;
+    transition: color $transition-speed, transform $transition-speed;
+
+    &:hover {
+      color: $primary-color;
+      transform: scale(1.1);
+    }
+  }
+
+  .new-message {
+    color: $primary-color;
+    font-family: "Nunito", serif;
+  }
+}
+
+// Category buttons (tabs)
+.messaging-categories {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid $border-color;
+  background-color: $bg-color;
+  font-family: "Nunito", serif;
+
+  .category-button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color $transition-speed, color $transition-speed;
+    outline: none;
+    text-transform: capitalize;
+    font-family: "Nunito", serif;
+
+    &:hover {
+      background-color: ($primary-color, 45%);
+    }
+
+    &.active {
+      color: $primary-color;
+      font-weight: bold;
+      border-bottom: 2px solid $primary-color;
+    }
+  }
+}
+
+// Message list styling with custom scrollbar
+.messages-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+  font-family: "Nunito", serif;
+
+  // Custom scrollbar styling (WebKit browsers)
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ($primary-color, 30%);
+    border-radius: 3px;
+  }
+}
+
+// Individual message item styling with hover effects
+.message-item {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+  font-family: "Nunito", serif;
+  border-bottom: 1px solid ($border-color, 40%);
+  transition: background-color $transition-speed, transform $transition-speed;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f9f9f9;
+    transform: translateX(3px);
+  }
+
+  .message-sender {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family: "Nunito", serif;
+  }
+
+  .message-subject {
+    font-size: 14px;
+    color: $text-color;
+    font-family: "Nunito", serif;
+  }
+
+  .message-time {
+    font-size: 12px;
+    color: ($secondary-color, 20%);
+    align-self: flex-end;
+    font-family: "Nunito", serif;
+    margin-top: 5px;
+  }
+}
+
+// Styling for "No messages found" text
+.no-messages {
+  text-align: center;
+  padding: 20px;
+  color: #888;
+  font-family: "Nunito", serif;
+}
+
+// Responsive adjustments for smaller screens
+@media (max-width: 600px) {
+  .messaging-card {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .messaging-header {
+    flex-direction: column;
+    align-items: stretch;
+
+    input {
+      margin-bottom: 10px;
+    }
+  }
+
+  .header-icons {
+    justify-content: flex-end;
+  }
+
+  .messaging-categories {
+    flex-direction: column;
+    align-items: stretch;
+
+    .category-button {
+      text-align: center;
+      border-bottom: 1px solid $border-color;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}

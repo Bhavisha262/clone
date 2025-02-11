@@ -1,0 +1,187 @@
+/* Header Styles */
+.header {
+  background-color:#004182; /* LinkedIn Blue */
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Slant Ray Animation */
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.093), rgba(255, 255, 255, 0.413));
+  transform: rotate(30deg);
+  animation: slantRay 3s ease-out forwards;
+}
+
+@keyframes slantRay {
+  0% {
+    left: -150%;
+    transform: rotate(30deg);
+  }
+  50% {
+    left: 0;
+    transform: rotate(0deg);
+  }
+  100% {
+    left: 0;
+    transform: rotate(30deg);
+  }
+}
+
+/* Header Container */
+.header-container {
+  width: 100%;
+  max-width: 1300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Align left, center, right */
+  padding: 0 20px;
+}
+
+/* Left Section: Sidebar */
+.header-left {
+  display: none; /* Hide sidebar by default */
+}
+
+
+/* Center Section: Logo */
+.header-center {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo{
+  width: 300px;
+  height: auto;
+  img{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Right Section: Navigation */
+.header-right {
+  flex: 3;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Navigation List */
+.header-right ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-right ul li {
+  position: relative;
+  margin-left: 15px;
+  transition: transform 0.3s ease-in-out; /* Smooth scaling */
+}
+
+/* Smooth Scale Effect on Hover */
+.header-right ul li:hover {
+  transform: scale(1.1);
+}
+
+/* Navigation Links */
+.header-right ul li a {
+  display: flex;
+  align-items: center;
+  color: lemonchiffon;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Animated Underline */
+.header-right ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: cyan;
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+/* Underline Expands on Hover */
+.header-right ul li:hover a::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Hover Effects */
+.header-right ul li a:hover {
+  color:cyan;
+}
+
+/* Icon Styles */
+.header-right ul li .icon {
+  margin-right: 8px;
+  font-size: 18px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Rotate Icon on Hover */
+.header-right ul li:hover .icon {
+  transform: rotate(15deg);
+}
+
+
+/* 🔥 Mobile Responsiveness */
+@media screen and (max-width: 1024px) {
+  .header-container {
+    padding: 0 15px;
+  }
+
+ 
+
+  .header-right ul li {
+    margin-left: 10px;
+  }
+
+  
+}
+
+@media screen and (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .header-left {
+    display: flex; /* Show sidebar only on mobile */
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .header-right {
+    display: none;
+  }
+
+
+}

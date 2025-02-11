@@ -1,0 +1,183 @@
+// Jobs.scss
+.jobs-page {
+    padding: 20px;
+    background-color: linear-gradient(180deg, lavenderblush,pink,honeydew );
+    font-family: "Nunito", serif;
+    color: #333;
+    text-align: center; // Center all text by default
+    button {
+        align-self: center; // Center button horizontally
+        background-color: #0073b1;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #005983;
+        }
+      }
+    &.loading,
+    &.error {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+  
+    .spinner {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #0073b1; // LinkedIn-like blue
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 10px;
+    }
+  
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  
+    .jobs-header {
+      text-align: center;
+      margin-bottom: 30px;
+      h1 {
+        font-size: 2.5rem;
+        color: #0073b1;
+      }
+    }
+  
+    section {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.5s ease-in-out;
+      text-align: center; // Ensure section content is centered
+  
+      h2 {
+        font-size: 1.75rem;
+        border-bottom: 2px solid #0073b1;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        color: #0073b1;
+        text-align: center; // Center h2 text
+      }
+  
+      .job-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center; // Center the job cards container
+  
+        .job-card {
+          background-color: lightyellow;
+          border: 1px solid #e1e9ee;
+          padding: 15px;
+          border-radius: 6px;
+          width: calc(33.333% - 20px);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          font-family: "Nunito", serif;
+          align-items: center; // Center align content inside job card
+          text-align: center; // Center text in job card
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+          &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          }
+  
+          h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+          }
+  
+          p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+          }
+  
+          button {
+            align-self: center; // Center button horizontally
+            background-color: #0073b1;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+  
+            &:hover {
+              background-color: #005983;
+            }
+          }
+        }
+      }
+  
+      .prep-card,
+      .premium-card {
+        background-color: lightyellow;
+        padding: 15px;
+        border-radius: 6px;
+        border: 1px solid #e1e9ee;
+        display: flex;
+        flex-direction: column;
+        align-items: center; // Center align content
+        text-align: center; // Center text
+  
+        p {
+          font-size: 0.95rem;
+          margin-bottom: 15px;
+        }
+  
+        button {
+          background-color: #0073b1;
+          color: #fff;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 4px;
+          font-size: 0.9rem;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+  
+          &:hover {
+            background-color: #005983;
+          }
+        }
+      }
+  
+      ul {
+        list-style-type: disc;
+        margin: 0 auto; // Center the unordered list
+        padding: 0;
+        li {
+          font-size: 0.95rem;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+  
