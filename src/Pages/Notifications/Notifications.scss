@@ -11,6 +11,9 @@
     align-items: center;
     margin-bottom: 20px;
     font-family: "Nunito", serif;
+    background-color: lightyellow;
+    padding: 20px;
+    border-radius: 20px;
 
     .profile-card1 {
       display: flex;
@@ -131,7 +134,7 @@
   }
 
   .company-card {
-    background-color: #eef3f8;
+    background-color: lightyellow;
     padding: 20px;
     border-radius: 10px;
     font-family: "Nunito", serif;

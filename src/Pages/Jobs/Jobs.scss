@@ -1,12 +1,267 @@
 // Jobs.scss
 .jobs-page {
+  padding: 20px;
+  background-color: linear-gradient(180deg, lavenderblush, pink, honeydew);
+  font-family: "Nunito", serif;
+  color: #333;
+  text-align: center; // Center all text by default
+
+  // =====================================
+// Modal Styles
+// =====================================
+
+// =====================================
+// Modal Styles (Responsive)
+// =====================================
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); // Semi-transparent dark overlay
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; // Ensure it sits above the main content
+  padding: 20px; // Ensure some space around modal on small screens
+}
+
+.modal {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.3s ease-out;
+  position: relative;
+  text-align: left; // For better readability of modal content
+  
+  @media (max-width: 768px) {
+    width: 95%;
+    max-width: 400px;
+    padding: 16px;
+    font-size: 12px;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    max-width: 350px;
+    padding: 12px;
+    border-radius: 6px;
+  }
+}
+
+// Modal slide down animation
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// =====================================
+// Snackbar Styles (Responsive)
+// =====================================
+
+.snackbar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0073b1; // LinkedIn-like blue
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  animation: fadeInOut 3s ease;
+  font-size: 16px;
+  text-align: center;
+  min-width: 250px;
+  max-width: 80%;
+  
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 10px 18px;
+    min-width: 220px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 13px;
+    padding: 8px 16px;
+    min-width: 200px;
+    bottom: 15px;
+  }
+}
+
+// Snackbar fade in and out animation
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  10%, 90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+  button {
+    align-self: center; // Center button horizontally
+    background-color: #0073b1;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #005983;
+    }
+    @media (max-width: 768px) {
+      font-size: 0.4rem;
+    }
+  }
+
+  &.loading,
+  &.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .spinner {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #0073b1; // LinkedIn-like blue
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .jobs-header {
+    text-align: center;
+    margin-bottom: 30px;
+
+    h1 {
+      font-size: 2.5rem;
+      color: #0073b1;
+    }
+  }
+
+  section {
+    background-color: #fff;
     padding: 20px;
-    background-color: linear-gradient(180deg, lavenderblush,pink,honeydew );
-    font-family: "Nunito", serif;
-    color: #333;
-    text-align: center; // Center all text by default
-    button {
-        align-self: center; // Center button horizontally
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+    text-align: center; // Ensure section content is centered
+
+    h2 {
+      font-size: 1.75rem;
+      border-bottom: 2px solid #0073b1;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      color: #0073b1;
+      text-align: center; // Center h2 text
+    }
+
+    .job-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center; // Center the job cards container
+
+      .job-card {
+        background-color: lightyellow;
+        border: 1px solid #e1e9ee;
+        padding: 15px;
+        border-radius: 6px;
+        width: calc(33.333% - 20px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-family: "Nunito", serif;
+        align-items: center; // Center align content inside job card
+        text-align: center; // Center text in job card
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        h3 {
+          font-size: 1.25rem;
+          margin-bottom: 10px;
+        }
+
+        p {
+          font-size: 0.95rem;
+          margin-bottom: 15px;
+        }
+
+        button {
+          align-self: center; // Center button horizontally
+          background-color: #0073b1;
+          color: #fff;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 4px;
+          font-size: 0.9rem;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: #005983;
+          }
+        }
+      }
+    }
+
+    .prep-card,
+    .premium-card {
+      background-color: lightyellow;
+      padding: 15px;
+      border-radius: 6px;
+      border: 1px solid #e1e9ee;
+      display: flex;
+      flex-direction: column;
+      align-items: center; // Center align content
+      text-align: center; // Center text
+
+      p {
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+      }
+
+      button {
         background-color: #0073b1;
         color: #fff;
         border: none;
@@ -20,164 +275,122 @@
           background-color: #005983;
         }
       }
-    &.loading,
-    &.error {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
     }
-  
-    .spinner {
-      border: 6px solid #f3f3f3;
-      border-top: 6px solid #0073b1; // LinkedIn-like blue
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      margin-bottom: 10px;
-    }
-  
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-  
-    .jobs-header {
-      text-align: center;
-      margin-bottom: 30px;
-      h1 {
-        font-size: 2.5rem;
-        color: #0073b1;
-      }
-    }
-  
-    section {
-      background-color: #fff;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      animation: fadeIn 0.5s ease-in-out;
-      text-align: center; // Ensure section content is centered
-  
-      h2 {
-        font-size: 1.75rem;
-        border-bottom: 2px solid #0073b1;
-        padding-bottom: 10px;
-        margin-bottom: 20px;
-        color: #0073b1;
-        text-align: center; // Center h2 text
-      }
-  
-      .job-cards {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center; // Center the job cards container
-  
-        .job-card {
-          background-color: lightyellow;
-          border: 1px solid #e1e9ee;
-          padding: 15px;
-          border-radius: 6px;
-          width: calc(33.333% - 20px);
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          font-family: "Nunito", serif;
-          align-items: center; // Center align content inside job card
-          text-align: center; // Center text in job card
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
-          &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-          }
-  
-          h3 {
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-          }
-  
-          p {
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-          }
-  
-          button {
-            align-self: center; // Center button horizontally
-            background-color: #0073b1;
-            color: #fff;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-  
-            &:hover {
-              background-color: #005983;
-            }
-          }
-        }
-      }
-  
-      .prep-card,
-      .premium-card {
-        background-color: lightyellow;
-        padding: 15px;
-        border-radius: 6px;
-        border: 1px solid #e1e9ee;
-        display: flex;
-        flex-direction: column;
-        align-items: center; // Center align content
-        text-align: center; // Center text
-  
-        p {
-          font-size: 0.95rem;
-          margin-bottom: 15px;
-        }
-  
-        button {
-          background-color: #0073b1;
-          color: #fff;
-          border: none;
-          padding: 8px 16px;
-          border-radius: 4px;
-          font-size: 0.9rem;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-  
-          &:hover {
-            background-color: #005983;
-          }
-        }
-      }
-  
-      ul {
-        list-style-type: disc;
-        margin: 0 auto; // Center the unordered list
-        padding: 0;
-        li {
-          font-size: 0.95rem;
-          margin-bottom: 5px;
-        }
-      }
-    }
-  
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
+
+    ul {
+      list-style-type: disc;
+      margin: 0 auto; // Center the unordered list
+      padding: 0;
+
+      li {
+        font-size: 0.95rem;
+        margin-bottom: 5px;
       }
     }
   }
-  
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  // =====================================
+  // Responsive Media Queries
+  // =====================================
+
+  // For large screens (desktops)
+  @media (max-width: 1200px) {
+    padding: 20px;
+    .jobs-header {
+      h1 {
+        font-size: 2.3rem;
+      }
+    }
+    section {
+      padding: 18px;
+      h2 {
+        font-size: 1.65rem;
+      }
+      .job-cards {
+        gap: 18px;
+        .job-card {
+          width: calc(33.333% - 18px);
+        }
+      }
+    }
+  }
+
+  // For medium screens (tablets)
+  @media (max-width: 992px) {
+    padding: 15px;
+    .jobs-header {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+    section {
+      padding: 15px;
+      h2 {
+        font-size: 1.5rem;
+      }
+      .job-cards {
+        gap: 15px;
+        .job-card {
+          width: calc(50% - 15px); // Two cards per row
+        }
+      }
+    }
+  }
+
+  // For small screens (landscape phones & small tablets)
+  @media (max-width: 768px) {
+    padding: 10px;
+    .jobs-header {
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+    section {
+      padding: 12px;
+      h2 {
+        font-size: 1.4rem;
+      }
+      .job-cards {
+        gap: 12px;
+        .job-card {
+          width: calc(50% - 12px); // Two cards per row
+        }
+      }
+    }
+  }
+
+  // For extra small screens (portrait phones)
+  @media (max-width: 576px) {
+    padding: 5px;
+    .jobs-header {
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+    section {
+      padding: 8px;
+      h2 {
+        font-size: 1.2rem;
+      }
+      .job-cards {
+        flex-direction: column;
+        gap: 10px;
+        .job-card {
+          width: 85%// Full width for job cards
+        }
+      }
+      ul {
+        margin: 0 10px; // Add side margins to the list
+      }
+    }
+  }
+}

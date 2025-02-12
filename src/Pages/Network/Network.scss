@@ -1,14 +1,17 @@
-// Color, font, and basic settings
+// ========================================
+// Color, Font, and Basic Settings
+// ========================================
 $primary-color: #0073b1;      // LinkedIn-like blue
 $secondary-color: #ffffff;    // White background
 $text-color: #333333;
-$background-color: linear-gradient(180deg, lavenderblush,pink,honeydew );
+$background-color: linear-gradient(180deg, lavenderblush, pink, honeydew);
+// Replace with a valid Sass function if needed, e.g. ():
 $hover-bg: ($primary-color, 10%);
 
 
-// ===================
-// Manage My Network
-// ===================
+// ========================================
+// Manage My Network Section
+// ========================================
 .network-container {
   padding: 20px;
   background-color: $background-color;
@@ -59,7 +62,6 @@ $hover-bg: ($primary-color, 10%);
     background-color: $secondary-color;
     padding: 10px;
     border-radius: 8px;
-    font-family: "Nunito", serif;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     position: relative;
 
@@ -74,7 +76,7 @@ $hover-bg: ($primary-color, 10%);
       input[type='text'],
       select {
         padding: 5px 10px;
-        border: 1px solid ($text-color, 40%);
+        border: 1px solid ($text-color, 0.6);
         border-radius: 4px;
         outline: none;
         font-family: "Nunito", serif;
@@ -84,7 +86,6 @@ $hover-bg: ($primary-color, 10%);
         padding: 5px 10px;
         background-color: $primary-color;
         color: $secondary-color;
-        font-family: "Nunito", serif;
         border: none;
         border-radius: 4px;
         cursor: pointer;
@@ -99,7 +100,7 @@ $hover-bg: ($primary-color, 10%);
     .filters-dropdown {
       position: absolute;
       background-color: $secondary-color;
-      border: 1px solid ($text-color, 40%);
+      border: 1px solid ($text-color, 0.6);
       border-radius: 4px;
       padding: 10px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -151,34 +152,143 @@ $hover-bg: ($primary-color, 10%);
         p {
           margin: 5px 0 0;
           font-size: 0.9rem;
-          color: ($text-color, 20%);
+          color: ($text-color, 0.8);
         }
 
         small {
           display: block;
           margin-top: 5px;
           font-size: 0.8rem;
-          color: ($text-color, 30%);
+          color: ($text-color, 0.7);
+        }
+      }
+    }
+  }
+
+  // ----------------------------
+  // Responsive adjustments
+  // ----------------------------
+  @media (max-width: 768px) {
+    padding: 15px;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .tabs {
+      .tab {
+        padding: 8px 16px;
+        margin: 0 3px;
+      }
+    }
+
+    .controls-row {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .control {
+        width: 100%;
+        margin: 5px 0;
+      }
+
+      .filters-dropdown {
+        position: static;
+        margin-top: 10px;
+      }
+    }
+
+    .list-container {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+
+      .network-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        .avatar {
+          width: 50px;
+          height: 50px;
+          margin: 0 0 10px;
+        }
+
+        .details {
+          h3 {
+            font-size: 1rem;
+          }
+          p,
+          small {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    padding: 10px;
+
+    h1 {
+      font-size: 1.3rem;
+    }
+
+    .tabs {
+      flex-wrap: wrap;
+      .tab {
+        padding: 6px 12px;
+        margin: 3px;
+      }
+    }
+
+    .controls-row {
+      padding: 8px;
+      .control {
+        margin: 4px 0;
+      }
+    }
+
+    .list-container {
+      grid-template-columns: 1fr;
+      gap: 10px;
+
+      .network-item {
+        padding: 10px;
+
+        .avatar {
+          width: 40px;
+          height: 40px;
+          margin-bottom: 8px;
+        }
+
+        .details {
+          h3 {
+            font-size: 0.9rem;
+          }
+          p,
+          small {
+            font-size: 0.75rem;
+          }
         }
       }
     }
   }
 }
 
-// ===================
+
+// ========================================
 // Grow Section
-// ===================
+// ========================================
 .grow-container {
   padding: 20px;
   margin-top: 40px;
   background-color: $secondary-color;
-  border: 1px solid ($text-color, 40%);
+  border: 1px solid ($text-color, 0.6);
   border-radius: 8px;
 
   h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: ($primary-color, 10%);
+    color: ($primary-color, 0.9);
     font-size: 2rem;
   }
 
@@ -253,27 +363,112 @@ $hover-bg: ($primary-color, 10%);
         p {
           margin: 5px 0 0;
           font-size: 0.9rem;
-          color: ($text-color, 20%);
+          color: ($text-color, 0.8);
+        }
+      }
+    }
+  }
+
+  // ----------------------------
+  // Responsive adjustments
+  // ----------------------------
+  @media (max-width: 768px) {
+    padding: 15px;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .tabs {
+      .tab {
+        padding: 8px 16px;
+        margin: 0 3px;
+      }
+    }
+
+    .list-container {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+
+      .grow-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        .avatar {
+          width: 50px;
+          height: 50px;
+          margin: 0 0 10px;
+        }
+
+        .details {
+          h3 {
+            font-size: 1rem;
+          }
+          p {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    padding: 10px;
+
+    h1 {
+      font-size: 1.3rem;
+    }
+
+    .tabs {
+      flex-wrap: wrap;
+      .tab {
+        padding: 6px 12px;
+        margin: 3px;
+      }
+    }
+
+    .list-container {
+      grid-template-columns: 1fr;
+      gap: 10px;
+
+      .grow-item {
+        padding: 10px;
+
+        .avatar {
+          width: 40px;
+          height: 40px;
+          margin-bottom: 8px;
+        }
+
+        .details {
+          h3 {
+            font-size: 0.9rem;
+          }
+          p {
+            font-size: 0.75rem;
+          }
         }
       }
     }
   }
 }
 
-// ===================
+
+// ========================================
 // Catch Up Section
-// ===================
+// ========================================
 .catchup-container {
   padding: 20px;
   margin-top: 40px;
   background-color: $secondary-color;
-  border: 1px solid ($text-color, 40%);
+  border: 1px solid ($text-color, 0.6);
   border-radius: 8px;
 
   h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: ($primary-color, 10%);
+    color: ($primary-color, 0.9);
     font-size: 2rem;
   }
 
@@ -348,24 +543,118 @@ $hover-bg: ($primary-color, 10%);
         p {
           margin: 5px 0 0;
           font-size: 0.9rem;
-          color: ($text-color, 20%);
+          color: ($text-color, 0.8);
+        }
+      }
+    }
+  }
+
+  // ----------------------------
+  // Responsive adjustments
+  // ----------------------------
+  @media (max-width: 768px) {
+    padding: 15px;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .tabs {
+      .tab {
+        padding: 8px 16px;
+        margin: 0 3px;
+      }
+    }
+
+    .list-container {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+
+      .catchup-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        .avatar {
+          width: 50px;
+          height: 50px;
+          margin: 0 0 10px;
+        }
+
+        .details {
+          h3 {
+            font-size: 1rem;
+          }
+          p {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    padding: 10px;
+
+    h1 {
+      font-size: 1.3rem;
+    }
+
+    .tabs {
+      flex-wrap: wrap;
+      .tab {
+        padding: 6px 12px;
+        margin: 3px;
+      }
+    }
+
+    .list-container {
+      grid-template-columns: 1fr;
+      gap: 10px;
+
+      .catchup-item {
+        padding: 10px;
+
+        .avatar {
+          width: 40px;
+          height: 40px;
+          margin-bottom: 8px;
+        }
+
+        .details {
+          h3 {
+            font-size: 0.9rem;
+          }
+          p {
+            font-size: 0.75rem;
+          }
         }
       }
     }
   }
 }
 
-// ===================
+
+// ========================================
 // Parent Page Container
-// ===================
+// ========================================
 .linkedin-network-page {
   padding: 20px;
   background-color: $background-color;
+
+  @media (max-width: 768px) {
+    padding: 15px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 10px;
+  }
 }
 
-// ===================
+
+// ========================================
 // Fade-In Animation
-// ===================
+// ========================================
 @keyframes fadeIn {
   from {
     opacity: 0;

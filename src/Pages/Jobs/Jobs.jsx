@@ -1,4 +1,3 @@
-// Jobs.jsx
 import React, { useState, useEffect } from 'react';
 import './Jobs.scss';
 
@@ -6,6 +5,17 @@ const Jobs = () => {
   const [jobsData, setJobsData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // Modal state variables
+  const [showApplyModal, setShowApplyModal] = useState(false);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [showLearnMoreModal, setShowLearnMoreModal] = useState(false);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const [selectedJob, setSelectedJob] = useState(null);
+
+  // Snackbar state variables
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
   // Fetch jobs data from the dummy backend API
   useEffect(() => {
@@ -25,6 +35,51 @@ const Jobs = () => {
         setLoading(false);
       });
   }, []);
+
+  // Auto-hide the snackbar after 3 seconds
+  useEffect(() => {
+    if (showSnackbar) {
+      const timer = setTimeout(() => {
+        setShowSnackbar(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showSnackbar]);
+
+  // Button click handlers
+  const handleApply = (job) => {
+    setSelectedJob(job);
+    setShowApplyModal(true);
+    setSnackbarMessage('Opening application form...');
+    setShowSnackbar(true);
+  };
+
+  const handleViewDetails = (job) => {
+    setSelectedJob(job);
+    setShowDetailsModal(true);
+    setSnackbarMessage('Displaying job details...');
+    setShowSnackbar(true);
+  };
+
+  const handleLearnMore = () => {
+    setShowLearnMoreModal(true);
+    setSnackbarMessage('Opening interview preparation tips...');
+    setShowSnackbar(true);
+  };
+
+  const handleUpgrade = () => {
+    setShowUpgradeModal(true);
+    setSnackbarMessage('Opening upgrade options...');
+    setShowSnackbar(true);
+  };
+
+  const handleSubmitApplication = (e) => {
+    e.preventDefault();
+    // Here you could add logic to process the application form data
+    setShowApplyModal(false);
+    setSnackbarMessage('Application submitted successfully!');
+    setShowSnackbar(true);
+  };
 
   if (loading) {
     return (
@@ -59,7 +114,9 @@ const Jobs = () => {
                 <p>
                   {job.company} - {job.location}
                 </p>
-                <button className="apply-btn">Apply</button>
+                <button className="apply-btn" onClick={() => handleApply(job)}>
+                  Apply
+                </button>
               </div>
             ))
           ) : (
@@ -77,7 +134,9 @@ const Jobs = () => {
               <p>
                 {job.company} - {job.location}
               </p>
-              <button className="view-btn">View Details</button>
+              <button className="view-btn" onClick={() => handleViewDetails(job)}>
+                View Details
+              </button>
             </div>
           ))
         ) : (
@@ -90,7 +149,9 @@ const Jobs = () => {
         {jobsData.interviewPrep ? (
           <div className="prep-card">
             <p>{jobsData.interviewPrep.tips}</p>
-            <button className="learn-btn">Learn More</button>
+            <button className="learn-btn" onClick={handleLearnMore}>
+              Learn More
+            </button>
           </div>
         ) : (
           <p>No tips available at the moment.</p>
@@ -107,7 +168,9 @@ const Jobs = () => {
                 <p>
                   {job.company} - {job.location}
                 </p>
-                <button className="apply-btn">Apply</button>
+                <button className="apply-btn" onClick={() => handleApply(job)}>
+                  Apply
+                </button>
               </div>
             ))
           ) : (
@@ -134,7 +197,9 @@ const Jobs = () => {
         {jobsData.premiumHiring ? (
           <div className="premium-card">
             <p>{jobsData.premiumHiring.description}</p>
-            <button className="upgrade-btn">Upgrade Now</button>
+            <button className="upgrade-btn" onClick={handleUpgrade}>
+              Upgrade Now
+            </button>
           </div>
         ) : (
           <p>Explore premium hiring options.</p>
@@ -151,7 +216,9 @@ const Jobs = () => {
                 <p>
                   {job.company} - {job.location}
                 </p>
-                <button className="apply-btn">Apply</button>
+                <button className="apply-btn" onClick={() => handleApply(job)}>
+                  Apply
+                </button>
               </div>
             ))
           ) : (
@@ -159,6 +226,81 @@ const Jobs = () => {
           )}
         </div>
       </section>
+
+      {/* Apply Modal */}
+      {showApplyModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>Apply for {selectedJob ? selectedJob.title : 'Job'}</h2>
+            <form onSubmit={handleSubmitApplication}>
+              <input type="text" placeholder="Your Name" required />
+              <input type="email" placeholder="Your Email" required />
+              <textarea placeholder="Cover Letter" required></textarea>
+              <button type="submit">Submit Application</button>
+            </form>
+            <button onClick={() => setShowApplyModal(false)}>Close</button>
+          </div>
+        </div>
+      )}
+
+      {/* Job Details Modal */}
+      {showDetailsModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>{selectedJob ? selectedJob.title : 'Job'} Details</h2>
+            <p>
+              <strong>Company:</strong> {selectedJob ? selectedJob.company : ''}
+            </p>
+            <p>
+              <strong>Location:</strong> {selectedJob ? selectedJob.location : ''}
+            </p>
+            <p>
+              <strong>Description:</strong>{' '}
+              {selectedJob && selectedJob.description
+                ? selectedJob.description
+                : 'No description available.'}
+            </p>
+            <button onClick={() => setShowDetailsModal(false)}>Close</button>
+          </div>
+        </div>
+      )}
+
+      {/* Learn More Modal */}
+      {showLearnMoreModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>Interview Preparation Tips</h2>
+            <p>
+              {jobsData.interviewPrep
+                ? jobsData.interviewPrep.tips
+                : 'No tips available.'}
+            </p>
+            <button onClick={() => setShowLearnMoreModal(false)}>Close</button>
+          </div>
+        </div>
+      )}
+
+      {/* Upgrade Modal */}
+      {showUpgradeModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>Upgrade to Premium Hiring</h2>
+            <p>
+              {jobsData.premiumHiring
+                ? jobsData.premiumHiring.description
+                : 'No information available.'}
+            </p>
+            <button onClick={() => setShowUpgradeModal(false)}>Close</button>
+          </div>
+        </div>
+      )}
+
+      {/* Snackbar Notification */}
+      {showSnackbar && (
+        <div className="snackbar">
+          {snackbarMessage}
+        </div>
+      )}
     </div>
   );
 };
