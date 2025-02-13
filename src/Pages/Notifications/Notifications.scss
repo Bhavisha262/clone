@@ -4,7 +4,29 @@
   margin: 0 auto;
   padding: 20px;
   color: #333;
-
+  
+  
+  
+  .snackbar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    opacity: 0.9;
+    animation: fadeInOut 3s;
+  }
+  
+  @keyframes fadeInOut {
+    0% { opacity: 0; }
+    20% { opacity: 0.9; }
+    80% { opacity: 0.9; }
+    100% { opacity: 0; }
+  }
+  
   .header1 {
     display: flex;
     justify-content: space-between;

@@ -7,33 +7,47 @@ const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
   const [activeTab, setActiveTab] = useState('All');
   const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [expandedSection, setExpandedSection] = useState(null);
+  const [isFollowing, setIsFollowing] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
 
   // Fetch notifications from the backend API
   const fetchNotifications = async () => {
     try {
       const response = await fetch('https://backl-main.vercel.app/api/notifications');
       const data = await response.json();
-      
-      // If data is an array, set it directly, otherwise assume it's an object with notifications
       setNotifications(Array.isArray(data) ? data : data.notifications || []);
     } catch (error) {
       console.error('Error fetching notifications:', error);
-      setNotifications([]); // Ensure notifications is never undefined
+      setNotifications([]);
     } finally {
       setLoading(false);
     }
   };
-  
 
   useEffect(() => {
     fetchNotifications();
   }, []);
 
-  // Filter notifications based on activeTab. (Assumes each notification has a "category" property)
+  // Filter notifications based on activeTab
   const filteredNotifications =
-    activeTab === 'All'
-      ? notifications
-      : notifications.filter((n) => n.category === activeTab);
+    activeTab === 'All' ? notifications : notifications.filter((n) => n.category === activeTab);
+
+  // Handle Manage Notifications Modal
+  const toggleModal = () => setShowModal(!showModal);
+
+  // Handle expanding sections
+  const toggleSection = (section) => {
+    setExpandedSection(expandedSection === section ? null : section);
+  };
+
+  // Handle Follow Button Click
+  const handleFollow = () => {
+    setIsFollowing(!isFollowing);
+    setSnackbarMessage(isFollowing ? 'You have unfollowed JobedIn Company.' : 'You are now following JobedIn Company.');
+    setTimeout(() => setSnackbarMessage(''), 3000);
+  };
 
   return (
     <div className="notification-page">
@@ -47,18 +61,14 @@ const Notifications = () => {
           </div>
         </div>
         <div className="manage-notifications-card">
-          <button>Manage Your Notifications</button>
+          <button >Manage Your Notifications</button>
         </div>
       </div>
 
       {/* Tabs Navigation */}
       <div className="tabs">
         {TABS.map((tab) => (
-          <div
-            key={tab}
-            className={`tab ${activeTab === tab ? 'active' : ''}`}
-            onClick={() => setActiveTab(tab)}
-          >
+          <div key={tab} className={`tab ${activeTab === tab ? 'active' : ''}`} onClick={() => setActiveTab(tab)}>
             {tab}
           </div>
         ))}
@@ -66,14 +76,10 @@ const Notifications = () => {
 
       {/* Notifications List */}
       <div className="notifications-list">
-      {Array.isArray(filteredNotifications) && filteredNotifications.length > 0 ? (
-  filteredNotifications.map((notification) => (
-
+        {filteredNotifications.length > 0 ? (
+          filteredNotifications.map((notification) => (
             <div key={notification.id} className="notification-item">
-              <img
-                src={notification.avatar || 'https://via.placeholder.com/40'}
-                alt="Avatar"
-              />
+              <img src={notification.avatar || 'https://via.placeholder.com/40'} alt="Avatar" />
               <div className="notification-content">
                 <p>{notification.message}</p>
                 <span className="time">{notification.time}</span>
@@ -89,8 +95,12 @@ const Notifications = () => {
       <div className="company-card">
         <h3>JobedIn Company</h3>
         <p>Follow our company page for updates</p>
-        <button>Follow</button>
+        <button onClick={handleFollow}>{isFollowing ? 'Following' : 'Follow'}</button>
       </div>
+
+
+      {/* Snackbar for Follow Message */}
+      {snackbarMessage && <div className="snackbar">{snackbarMessage}</div>}
     </div>
   );
 };
