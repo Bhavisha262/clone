@@ -106,13 +106,14 @@ $transition: all 0.3s ease-in-out;
   .profile-content {
     display: flex;
     margin-top: 60px;
+    
 
     .left-column {
       flex: 2;
       margin-right: 20px;
 
       .card {
-        background: rgba(255, 255, 255, 0.15);
+        background: $card-bg;
         border: 1px solid $border;
         backdrop-filter: blur(10px);
         border-radius: 12px;
@@ -141,7 +142,7 @@ $transition: all 0.3s ease-in-out;
       flex: 1;
 
       .card {
-        background: rgba(255, 255, 255, 0.15);
+        background: $card-bg;
         border: 1px solid $border;
         backdrop-filter: blur(10px);
         border-radius: 12px;
