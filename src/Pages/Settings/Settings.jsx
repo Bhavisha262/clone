@@ -1,35 +1,64 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./Settings.scss";
 
 const Settings = () => {
-  const [settings, setSettings] = useState({});
+  const [settings, setSettings] = useState(null);
 
   useEffect(() => {
-    fetch("https://backl-main.vercel.app/api/settings")
-      .then((res) => res.json())
-      .then((data) => setSettings(data))
-      .catch((err) => console.error("Error fetching settings:", err));
+    axios.get("https://backl-main.vercel.app/settings") // Change this to your actual backend URL
+      .then((response) => {
+        setSettings(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching settings:", error);
+      });
   }, []);
 
+  if (!settings) {
+    return <div className="settings">Loading...</div>;
+  }
+
   return (
-    <div className="settings-container">
-      <h2>Settings</h2>
+    <div className="settings">
+      <h1>Settings</h1>
 
-      <div className="settings-section">
-        <h3>Account Preferences</h3>
-        <p>Language: {settings?.account_preferences?.language || "Loading..."}</p>
-        <p>Content Language: {settings?.account_preferences?.content_language || "Loading..."}</p>
-      </div>
+      {/* Account Preferences */}
+      <section>
+        <h2>Account Preferences</h2>
+        <div>{settings.accountPreferences.profileInformation}</div>
+        <div>{settings.accountPreferences.display}</div>
+        <div>{settings.accountPreferences.accountManagement}</div>
+        <div>{settings.accountPreferences.generalPreferences}</div>
+      </section>
 
-      <div className="settings-section">
-        <h3>Manage Account</h3>
-        <p>{settings?.manage_account?.privacy || "Loading..."}</p>
-      </div>
+      {/* Sign-In & Security */}
+      <section>
+        <h2>Sign-In & Security</h2>
+        <div>{settings.signInSecurity.accountAccess}</div>
+        <div>{settings.signInSecurity.visibility}</div>
+      </section>
 
-      <div className="settings-section">
-        <h3>Sign In & Security</h3>
-        <p>Password: {settings?.sign_in_security?.password || "Loading..."}</p>
-      </div>
+      {/* Data Privacy */}
+      <section>
+        <h2>Data Privacy</h2>
+        <div>{settings.dataPrivacy.howLinkedInUsesData}</div>
+        <div>{settings.dataPrivacy.jobSeekingPreferences}</div>
+      </section>
+
+      {/* Advertising Data */}
+      <section>
+        <h2>Advertising Data</h2>
+        <div>{settings.advertisingData.profileData}</div>
+        <div>{settings.advertisingData.thirdPartyData}</div>
+      </section>
+
+      {/* Network */}
+      <section>
+        <h2>Network</h2>
+        <div>{settings.network.manage}</div>
+        <div>{settings.network.signInOut}</div>
+      </section>
     </div>
   );
 };
