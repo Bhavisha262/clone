@@ -1,56 +1,49 @@
-// App.jsx
-import React, { useState, useEffect } from 'react';
-import './Settings.scss';
+import React, { useEffect, useState } from "react";
+import "./Settings.scss";
 
-function App() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const Settings = () => {
+  const [settings, setSettings] = useState(null);
 
   useEffect(() => {
-    fetch('https://backl-main.vercel.app/api/settings')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        setData(data);
-        setLoading(false);
-      })
-      .catch(error => {
-        setError(error.toString());
-        setLoading(false);
-      });
+    fetch("https://backl-main.vercel.app/settings.json") // Fetching JSON from backend
+      .then((response) => response.json())
+      .then((data) => setSettings(data.settings))
+      .catch((error) => console.error("Error fetching settings:", error));
   }, []);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (!settings) return <div className="loading">Loading...</div>;
 
   return (
-    <div className="me-page">
-      <section className="account">
-        <h2>Account</h2>
-        <img src={data.account.profileImage} alt="Profile" />
-        <p>Name: {data.account.name}</p>
-        <p>Email: {data.account.email}</p>
-      </section>
-      <section className="manage">
-        <h2>Manage</h2>
+    <div className="settings-container">
+      {/* Sidebar */}
+      <div className="sidebar">
+        <h2>Settings</h2>
         <ul>
-          <li>{data.manage.settings}</li>
-          <li>{data.manage.privacy}</li>
-          <li>{data.manage.security}</li>
+          <li><a href="#account">Account</a></li>
+          <li><a href="#manage">Manage</a></li>
+          <li><a href="#security">Sign In & Security</a></li>
         </ul>
-      </section>
-      <section className="auth">
-        <h2>Authentication</h2>
-        <button onClick={() => alert('Sign In clicked')}>{data.auth.signIn}</button>
-        <button onClick={() => alert('Sign Out clicked')}>{data.auth.signOut}</button>
-      </section>
+      </div>
+
+      {/* Main Content */}
+      <div className="settings-content">
+        {Object.keys(settings).map((key) => (
+          <div key={key} id={key} className="settings-section">
+            <h3>{settings[key].title}</h3>
+            <p>{settings[key].description}</p>
+            <div className="settings-options">
+              {settings[key].sections.map((item, index) => (
+                <div key={index} className="settings-item">
+                  <span className="setting-name">{item.name}</span>
+                  <span className="setting-value">{item.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
-export default App;
+export default Settings;

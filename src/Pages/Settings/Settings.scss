@@ -1,59 +1,78 @@
-// App.scss
-.me-page {
-  max-width: 800px;
-  margin: 20px auto;
+.settings-container {
+  display: flex;
+  max-width: 1000px;
+  margin: auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
   
-  section {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 15px;
-    margin-bottom: 20px;
-    background: #f9f9f9;
-  }
-  
-  .account {
-    display: flex;
-    align-items: center;
-    
-    img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin-right: 20px;
+  .sidebar {
+    width: 250px;
+    padding: 20px;
+    background: #f3f2ef;
+    border-right: 1px solid #ccc;
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
     }
-    
-    p {
-      margin: 5px 0;
-    }
-  }
-  
-  .manage {
+
     ul {
       list-style: none;
       padding: 0;
-      
+
       li {
         margin-bottom: 10px;
+        a {
+          text-decoration: none;
+          color: #0073b1;
+          font-weight: bold;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
     }
   }
-  
-  .auth {
-    button {
-      margin-right: 10px;
-      padding: 10px 20px;
-      border: none;
-      background: #0073b1;
-      color: white;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      
-      &:hover {
-        background: #005582;
+
+  .settings-content {
+    flex: 1;
+    padding: 20px;
+
+    .settings-section {
+      margin-bottom: 30px;
+
+      h3 {
+        font-size: 20px;
+        margin-bottom: 5px;
+      }
+
+      p {
+        color: #666;
+        margin-bottom: 15px;
+      }
+
+      .settings-options {
+        .settings-item {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px;
+          border-bottom: 1px solid #ddd;
+
+          .setting-name {
+            font-weight: bold;
+          }
+
+          .setting-value {
+            color: #555;
+          }
+        }
       }
     }
+  }
+
+  .loading {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
   }
 }
