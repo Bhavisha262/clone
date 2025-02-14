@@ -5,7 +5,7 @@ const Settings = () => {
   const [settings, setSettings] = useState(null);
 
   useEffect(() => {
-    fetch("https://backl-main.vercel.app/settings.json") // Fetching JSON from backend
+    fetch("https://backl-main.vercel.app/api/settings") // Fetching JSON from backend
       .then((response) => response.json())
       .then((data) => setSettings(data.settings))
       .catch((error) => console.error("Error fetching settings:", error));
