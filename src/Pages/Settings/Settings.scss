@@ -29,6 +29,30 @@
         color: white;
       }
     }
+
+    .settings-sub-sidebar {
+      margin-top: 10px;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+
+      .sub-sidebar-item {
+        padding: 10px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.3s;
+        color: #555;
+        border-radius: 5px;
+
+        &:hover {
+          background: #f0f0f0;
+        }
+
+        &.active {
+          background: #005582;
+          color: white;
+        }
+      }
+    }
   }
 
   .settings-content {
