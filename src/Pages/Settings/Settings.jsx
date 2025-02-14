@@ -8,7 +8,7 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('https://backl-main.vercel.app//api/settings')
+    fetch('https://backl-main.vercel.app/api/settings')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
