@@ -1,40 +1,214 @@
-.sub-section-list {
-  list-style: none;
-  padding: 10px 0;
+.settings-container {
+  display: flex;
+  height: max-content;
+  font-family: "Nunito", serif;
+  
 
-  .sub-section-item {
-    padding: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #0073b1;
-    transition: 0.3s;
+  .settings-sidebar {
+    width: 250px;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
 
-    &:hover {
-      background: #ebebeb;
+    .sidebar-item {
+      padding: 12px;
+      font-weight: bold;
+      cursor: pointer;
       border-radius: 5px;
-    }
-
-    &.active {
+      transition: 0.3s;
+      color: #333;
       background: #0073b1;
       color: white;
+    }
+
+    .settings-sub-sidebar {
+      margin-top: 10px;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .sub-sidebar-item {
+        padding: 10px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.3s;
+        color: #555;
+        border-radius: 5px;
+        background: #005582;
+        color: cyan;
+
+        &:hover {
+          background: rgb(0, 60, 139);
+        }
+
+        &.active {
+          background: #005582;
+          color: lightyellow;
+        }
+      }
+    }
+  }
+
+  .settings-content {
+    flex-grow: 1;
+    padding: 30px;
+ 
+
+    h2 {
+      margin-bottom: 10px;
+      color: #0073b1;
+    }
+
+    p {
+      color: #555;
+    }
+
+    .profile-info {
+      background: #f9f9f9;
+      padding: 12px;
       border-radius: 5px;
+      margin-bottom: 10px;
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+
+      p {
+        margin: 8px 0;
+        color: #333;
+      }
+
+      label {
+        display: block;
+        margin: 8px 0;
+        font-weight: bold;
+        color: #333;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .button-group {
+        display: flex;
+        gap: 5px;
+        margin-top: 10px;
+      }
+
+      .edit-btn {
+        background: #0073b1;
+        color: white;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      .save-btn {
+        background: #28a745;
+        color: white;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+        margin-right: 5px;
+      }
+
+      .cancel-btn {
+        background: #dc3545;
+        color: white;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+    }
+
+    .display-settings {
+      background: #f9f9f9;
+      padding: 12px;
+      border-radius: 5px;
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+      p {
+        margin-bottom: 10px;
+      }
+      .dark-mode-options {
+        display: flex;
+        gap: 10px;
+      }
+      .dark-mode-btn {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background: #0073b1;
+        color: white;
+        transition: background 0.3s;
+        &.active {
+          background: #005582;
+        }
+      }
+    }
+
+    .general-preferences-settings {
+      background: #f9f9f9;
+      padding: 12px;
+      border-radius: 5px;
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+      label {
+        display: block;
+        margin: 8px 0;
+        font-weight: bold;
+        color: #333;
+      }
+      select,
+      input[type="checkbox"] {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .button-group {
+        display: flex;
+        gap: 5px;
+        margin-top: 10px;
+      }
+    }
+
+    .loading {
+      font-size: 18px;
+      font-weight: bold;
+      color: #0073b1;
     }
   }
 }
 
-.sub-section-content {
-  margin-top: 20px;
+/* Dark mode styles applied when the body has the "dark" class */
+body.dark {
+  background-color: #333;
+  color: #fff;
+}
 
-  h3 {
-    color: #0073b1;
-    margin-bottom: 10px;
-  }
+body.dark .settings-container {
+  background-color: #222;
+}
 
-  .setting-item {
-    background: #f9f9f9;
-    padding: 12px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-  }
+body.dark .settings-sidebar {
+  background: #444;
+}
+
+body.dark .settings-content {
+  background: #333;
+  color: #fff;
+}
+
+body.dark .sidebar-item,
+body.dark .sub-sidebar-item {
+  color: #fff;
 }
