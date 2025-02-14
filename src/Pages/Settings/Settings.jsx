@@ -1,46 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Settings.scss";
 
 const Settings = () => {
   const [settings, setSettings] = useState(null);
 
   useEffect(() => {
-    fetch("https://backl-main.vercel.app/api/settings") // Fetching JSON from backend
-      .then((response) => response.json())
-      .then((data) => setSettings(data.settings))
-      .catch((error) => console.error("Error fetching settings:", error));
+    fetch("https://backl-main.vercel.app/api/settings") // Fetching dummy API
+      .then((res) => res.json())
+      .then((data) => setSettings(data))
+      .catch((err) => console.error("Error fetching settings:", err));
   }, []);
 
-  if (!settings) return <div className="loading">Loading...</div>;
+  if (!settings) return <div>Loading...</div>;
 
   return (
     <div className="settings-container">
-      {/* Sidebar */}
-      <div className="sidebar">
-        <h2>Settings</h2>
-        <ul>
-          <li><a href="#account">Account</a></li>
-          <li><a href="#manage">Manage</a></li>
-          <li><a href="#security">Sign In & Security</a></li>
-        </ul>
+      <h2>Settings</h2>
+      <div className="settings-section">
+        <h3>Account Preferences</h3>
+        <p>Language: {settings.account_preferences.language}</p>
+        <p>Content Language: {settings.account_preferences.content_language}</p>
+        <p>Dark Mode: {settings.account_preferences.dark_mode ? "On" : "Off"}</p>
+        <p>Autoplay Videos: {settings.account_preferences.autoplay_videos ? "On" : "Off"}</p>
       </div>
 
-      {/* Main Content */}
-      <div className="settings-content">
-        {Object.keys(settings).map((key) => (
-          <div key={key} id={key} className="settings-section">
-            <h3>{settings[key].title}</h3>
-            <p>{settings[key].description}</p>
-            <div className="settings-options">
-              {settings[key].sections.map((item, index) => (
-                <div key={index} className="settings-item">
-                  <span className="setting-name">{item.name}</span>
-                  <span className="setting-value">{item.value}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+      <div className="settings-section">
+        <h3>Manage Account</h3>
+        <p>{settings.manage_account.privacy}</p>
+        <p>{settings.manage_account.ads}</p>
+        <p>{settings.manage_account.communications}</p>
+      </div>
+
+      <div className="settings-section">
+        <h3>Sign In & Security</h3>
+        <p>Password: {settings.sign_in_security.password}</p>
+        <p>Devices: {settings.sign_in_security.devices.join(", ")}</p>
+        <p>Session History: {settings.sign_in_security.session_history.join(", ")}</p>
       </div>
     </div>
   );
