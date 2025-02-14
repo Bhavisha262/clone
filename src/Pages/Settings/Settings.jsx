@@ -1,49 +1,56 @@
-// Settings.jsx
-import React, { useEffect, useState } from 'react';
+// App.jsx
+import React, { useState, useEffect } from 'react';
+import './Settings.scss';
 
-const Settings = () => {
-  const [settings, setSettings] = useState(null);
+function App() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Adjust the URL if your backend runs on a different port or domain
-    fetch('https://backl-main.vercel.app/api/settings')
-      .then((res) => {
-        if (!res.ok) {
+    fetch('https://backl-main.vercel.app//api/settings')
+      .then(response => {
+        if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        return res.json();
+        return response.json();
       })
-      .then((data) => setSettings(data))
-      .catch((err) => setError(err.message));
+      .then(data => {
+        setData(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        setError(error.toString());
+        setLoading(false);
+      });
   }, []);
 
-  if (error) {
-    return <div>Error fetching settings: {error}</div>;
-  }
-
-  if (!settings) {
-    return <div>Loading settings...</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="settings-container">
-      <h1>Settings</h1>
-      {Object.keys(settings).map((key) => (
-        <div key={key} className="settings-section">
-          <h2>{settings[key].title}</h2>
-          <p>{settings[key].description}</p>
-          {settings[key].options && (
-            <ul>
-              {settings[key].options.map((option, idx) => (
-                <li key={idx}>{option}</li>
-              ))}
-            </ul>
-          )}
-        </div>
-      ))}
+    <div className="me-page">
+      <section className="account">
+        <h2>Account</h2>
+        <img src={data.account.profileImage} alt="Profile" />
+        <p>Name: {data.account.name}</p>
+        <p>Email: {data.account.email}</p>
+      </section>
+      <section className="manage">
+        <h2>Manage</h2>
+        <ul>
+          <li>{data.manage.settings}</li>
+          <li>{data.manage.privacy}</li>
+          <li>{data.manage.security}</li>
+        </ul>
+      </section>
+      <section className="auth">
+        <h2>Authentication</h2>
+        <button onClick={() => alert('Sign In clicked')}>{data.auth.signIn}</button>
+        <button onClick={() => alert('Sign Out clicked')}>{data.auth.signOut}</button>
+      </section>
     </div>
   );
-};
+}
 
-export default Settings;
+export default App;

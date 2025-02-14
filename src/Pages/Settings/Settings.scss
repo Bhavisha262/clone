@@ -1,32 +1,58 @@
-// Settings.scss
-.settings-container {
+// App.scss
+.me-page {
+  max-width: 800px;
+  margin: 20px auto;
   padding: 20px;
   font-family: Arial, sans-serif;
-
-  h1 {
+  
+  section {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 15px;
     margin-bottom: 20px;
+    background: #f9f9f9;
   }
-
-  .settings-section {
-    margin-bottom: 30px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
-
-    h2 {
-      font-size: 1.5em;
-      color: #0073b1; // LinkedIn blue-ish color
+  
+  .account {
+    display: flex;
+    align-items: center;
+    
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-right: 20px;
     }
-
+    
     p {
-      margin: 10px 0;
+      margin: 5px 0;
     }
-
+  }
+  
+  .manage {
     ul {
       list-style: none;
-      padding-left: 0;
-
+      padding: 0;
+      
       li {
-        padding: 5px 0;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  
+  .auth {
+    button {
+      margin-right: 10px;
+      padding: 10px 20px;
+      border: none;
+      background: #0073b1;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      
+      &:hover {
+        background: #005582;
       }
     }
   }
