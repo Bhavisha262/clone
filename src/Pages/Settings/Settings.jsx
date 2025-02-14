@@ -3,7 +3,7 @@ import "./Settings.scss";
 
 const Settings = () => {
   const [selectedCategory, setSelectedCategory] = useState("account-preferences");
-  const [selectedSubCategory, setSelectedSubCategory] = useState(null);
+  const [selectedSection, setSelectedSection] = useState(null);
   const [settingsData, setSettingsData] = useState(null);
 
   useEffect(() => {
@@ -23,18 +23,9 @@ const Settings = () => {
     { id: "network", name: "Network" },
   ];
 
-  const subCategories = {
-    "account-preferences": [
-      { id: "profile-information", name: "Profile Information" },
-      { id: "display", name: "Display" },
-      { id: "account-management", name: "Account Management" },
-      { id: "general-preferences", name: "General Preferences" },
-    ],
-  };
-
   return (
     <div className="settings-container">
-      {/* Sidebar */}
+      {/* Sidebar with main categories */}
       <div className="settings-sidebar">
         {categories.map((category) => (
           <div
@@ -42,52 +33,60 @@ const Settings = () => {
             className={`sidebar-item ${selectedCategory === category.id ? "active" : ""}`}
             onClick={() => {
               setSelectedCategory(category.id);
-              setSelectedSubCategory(null);
+              setSelectedSection(null); // Reset sub-section when switching main category
             }}
           >
             {category.name}
           </div>
         ))}
-
-        {/* Show Subcategories if Account Preferences is Selected */}
-        {selectedCategory === "account-preferences" && (
-          <div className="settings-sub-sidebar">
-            {subCategories[selectedCategory].map((sub) => (
-              <div
-                key={sub.id}
-                className={`sub-sidebar-item ${selectedSubCategory === sub.id ? "active" : ""}`}
-                onClick={() => setSelectedSubCategory(sub.id)}
-              >
-                {sub.name}
-              </div>
-            ))}
-          </div>
-        )}
       </div>
 
-      {/* Content Section */}
+      {/* Content Area */}
       <div className="settings-content">
         {settingsData ? (
           <>
-            <h2>{selectedSubCategory 
-                ? settingsData[selectedCategory]?.subSections[selectedSubCategory]?.title 
-                : settingsData[selectedCategory]?.title || "Settings"}
-            </h2>
-            <p>{selectedSubCategory 
-                ? settingsData[selectedCategory]?.subSections[selectedSubCategory]?.description 
-                : settingsData[selectedCategory]?.description}
-            </p>
-            <ul>
-              {(selectedSubCategory 
-                ? settingsData[selectedCategory]?.subSections[selectedSubCategory]?.options 
-                : settingsData[selectedCategory]?.options
-              )?.map((option, index) => (
-                <li key={index} className="setting-item">
-                  <strong>{option.name}</strong>
-                  <p>{option.description}</p>
-                </li>
-              ))}
-            </ul>
+            <h2>{settingsData[selectedCategory]?.title || "Settings"}</h2>
+            <p>{settingsData[selectedCategory]?.description}</p>
+
+            {/* If Account Preferences, show its sub-sections */}
+            {selectedCategory === "account-preferences" && (
+              <ul className="sub-section-list">
+                {Object.keys(settingsData[selectedCategory]?.sections || {}).map((sectionKey) => (
+                  <li
+                    key={sectionKey}
+                    className={`sub-section-item ${selectedSection === sectionKey ? "active" : ""}`}
+                    onClick={() => setSelectedSection(sectionKey)}
+                  >
+                    {settingsData[selectedCategory].sections[sectionKey].title}
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {/* Display the content of the selected sub-section */}
+            {selectedSection && selectedCategory === "account-preferences" ? (
+              <div className="sub-section-content">
+                <h3>{settingsData[selectedCategory].sections[selectedSection]?.title}</h3>
+                <ul>
+                  {settingsData[selectedCategory].sections[selectedSection]?.options.map((option, index) => (
+                    <li key={index} className="setting-item">
+                      <strong>{option.name}</strong>
+                      <p>{option.description}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              // If no sub-section is selected, show the default category content
+              <ul>
+                {settingsData[selectedCategory]?.options?.map((option, index) => (
+                  <li key={index} className="setting-item">
+                    <strong>{option.name}</strong>
+                    <p>{option.description}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
           </>
         ) : (
           <div className="loading">Loading settings...</div>
