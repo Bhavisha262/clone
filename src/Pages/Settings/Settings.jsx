@@ -1,59 +1,47 @@
-import React, { useState, useEffect } from "react";
-import "./Settings.scss";
+// Settings.jsx
+import React, { useEffect, useState } from 'react';
 
 const Settings = () => {
   const [settings, setSettings] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("https://backl-main.vercel.app/api/settings")
-      .then((res) => res.json())
+    // Adjust the URL if your backend runs on a different port or domain
+    fetch('https://backl-main.vercel.app/api/settings')
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.json();
+      })
       .then((data) => setSettings(data))
-      .catch((err) => console.error("Error fetching settings:", err));
+      .catch((err) => setError(err.message));
   }, []);
 
-  if (!settings) return <div className="loading">Loading settings...</div>;
+  if (error) {
+    return <div>Error fetching settings: {error}</div>;
+  }
+
+  if (!settings) {
+    return <div>Loading settings...</div>;
+  }
 
   return (
     <div className="settings-container">
-      <h2>Settings</h2>
-      <div className="section">
-        <h3>Account</h3>
-        <p><strong>Name:</strong> {settings.account.name}</p>
-        <p><strong>Email:</strong> {settings.account.email}</p>
-        <p><strong>Phone:</strong> {settings.account.phone}</p>
-        <p><strong>Language:</strong> {settings.account.language}</p>
-        <p><strong>Region:</strong> {settings.account.region}</p>
-      </div>
-
-      <div className="section">
-        <h3>Privacy</h3>
-        <p><strong>Profile Visibility:</strong> {settings.privacy.profileVisibility}</p>
-        <p><strong>Email Visibility:</strong> {settings.privacy.emailVisibility}</p>
-        <p><strong>Phone Visibility:</strong> {settings.privacy.phoneVisibility}</p>
-      </div>
-
-      <div className="section">
-        <h3>Ads</h3>
-        <p><strong>Ad Preferences:</strong> {settings.ads.adPreferences}</p>
-        <p><strong>Data Sharing:</strong> {settings.ads.dataSharing ? "Enabled" : "Disabled"}</p>
-      </div>
-
-      <div className="section">
-        <h3>Communications</h3>
-        <p><strong>Email Notifications:</strong> {settings.communications.emailNotifications ? "On" : "Off"}</p>
-        <p><strong>Push Notifications:</strong> {settings.communications.pushNotifications ? "On" : "Off"}</p>
-      </div>
-
-      <div className="section">
-        <h3>Visibility</h3>
-        <p><strong>Active Status:</strong> {settings.visibility.activeStatus}</p>
-        <p><strong>Last Seen:</strong> {settings.visibility.lastSeen}</p>
-      </div>
-
-      <div className="section">
-        <h3>Data</h3>
-        <p><strong>Download Data:</strong> {settings.data.downloadData}</p>
-      </div>
+      <h1>Settings</h1>
+      {Object.keys(settings).map((key) => (
+        <div key={key} className="settings-section">
+          <h2>{settings[key].title}</h2>
+          <p>{settings[key].description}</p>
+          {settings[key].options && (
+            <ul>
+              {settings[key].options.map((option, idx) => (
+                <li key={idx}>{option}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
     </div>
   );
 };

@@ -1,41 +1,33 @@
+// Settings.scss
 .settings-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
-  
+  padding: 20px;
+  font-family: Arial, sans-serif;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .settings-section {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+
     h2 {
-      text-align: center;
-      margin-bottom: 20px;
+      font-size: 1.5em;
+      color: #0073b1; // LinkedIn blue-ish color
     }
-  
-    .section {
-      margin-bottom: 20px;
-      padding: 15px;
-      border-bottom: 1px solid #ddd;
-  
-      h3 {
-        margin-bottom: 10px;
-        color: #333;
-      }
-  
-      p {
-        margin: 5px 0;
-        color: #555;
-        strong {
-          color: #222;
-        }
+
+    p {
+      margin: 10px 0;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+
+      li {
+        padding: 5px 0;
       }
     }
   }
-  
-  .loading {
-    text-align: center;
-    font-size: 18px;
-    color: #555;
-    margin-top: 50px;
-  }
-  
+}
