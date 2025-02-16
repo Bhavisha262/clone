@@ -1,202 +1,187 @@
+// Global box-sizing for all elements
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+// Variables
+$primary: #0073b1;
+$secondary: #005582;
+$accent: #00ffff; // cyan-like accent
+$bg-light: #f9f9f9;
+$text-color: #333;
+$white: #fff;
+
+$breakpoint-md: 992px;
+$breakpoint-sm: 768px;
+$breakpoint-xs: 480px;
+
 .settings-container {
   display: flex;
-  height: max-content;
-  font-family: "Nunito", serif;
-  
+  flex-wrap: wrap;
+  font-family: "Nunito", sans-serif;
+  background: #f3f3f3;
+  padding: 20px;
+  gap: 20px;
 
   .settings-sidebar {
-    width: 250px;
+    flex: 0 0 250px;
+    background: $primary;
     padding: 20px;
-    border-right: 1px solid #ddd;
+    border-right: 1px solid ($primary, 20%);
     display: flex;
     flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     .sidebar-item {
       padding: 12px;
       font-weight: bold;
       cursor: pointer;
-      border-radius: 5px;
-      transition: 0.3s;
-      color: #333;
-      background: #0073b1;
-      color: white;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      background: $primary;
+      color: $white;
+      text-align: center;
+      transition: background 0.3s ease, transform 0.3s;
+      
+      &:hover {
+        background: ($primary, 5%);
+        transform: scale(1.02);
+      }
+      &.active {
+        background: $secondary;
+        color: ($white, 10%);
+      }
     }
 
     .settings-sub-sidebar {
-      margin-top: 10px;
-      border-top: 1px solid #ddd;
-      padding-top: 10px;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid ($primary, 20%);
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 8px;
 
       .sub-sidebar-item {
         padding: 10px;
-        font-size: 14px;
+        font-size: 0.9rem;
         cursor: pointer;
-        transition: 0.3s;
-        color: #555;
-        border-radius: 5px;
-        background: #005582;
-        color: cyan;
-
+        border-radius: 4px;
+        background: $secondary;
+        color: $accent;
+        text-align: center;
+        transition: background 0.3s ease, color 0.3s ease;
+        
         &:hover {
-          background: rgb(0, 60, 139);
+          background: ($secondary, 5%);
         }
-
         &.active {
-          background: #005582;
-          color: lightyellow;
+          background: $secondary;
+          color: ($accent, 20%);
         }
       }
     }
   }
 
   .settings-content {
-    flex-grow: 1;
+    flex: 1;
+    background: $white;
     padding: 30px;
- 
-
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    /* Remove min-width to prevent overflow */
+    
     h2 {
-      margin-bottom: 10px;
-      color: #0073b1;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: $primary;
+      border-bottom: 2px solid ($primary, 40%);
+      padding-bottom: 8px;
     }
 
     p {
-      color: #555;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: $text-color;
+      margin-bottom: 15px;
     }
 
-    .profile-info {
-      background: #f9f9f9;
-      padding: 12px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-
-      p {
-        margin: 8px 0;
-        color: #333;
-      }
-
-      label {
-        display: block;
-        margin: 8px 0;
-        font-weight: bold;
-        color: #333;
-      }
-
-      input,
-      textarea {
-        width: 100%;
-        padding: 8px;
-        margin: 5px 0;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
-
-      .button-group {
-        display: flex;
-        gap: 5px;
-        margin-top: 10px;
-      }
-
-      .edit-btn {
-        background: #0073b1;
-        color: white;
-        padding: 10px;
-        border: none;
-        cursor: pointer;
-        margin-top: 10px;
-      }
-
-      .save-btn {
-        background: #28a745;
-        color: white;
-        padding: 10px;
-        border: none;
-        cursor: pointer;
-        margin-top: 10px;
-        margin-right: 5px;
-      }
-
-      .cancel-btn {
-        background: #dc3545;
-        color: white;
-        padding: 10px;
-        border: none;
-        cursor: pointer;
-        margin-top: 10px;
-      }
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-family: "Nunito", sans-serif;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
     }
 
-    .display-settings {
-      background: #f9f9f9;
-      padding: 12px;
-      border-radius: 5px;
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-      p {
-        margin-bottom: 10px;
-      }
-      .dark-mode-options {
-        display: flex;
-        gap: 10px;
-      }
-      .dark-mode-btn {
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        background: #0073b1;
-        color: white;
-        transition: background 0.3s;
-        &.active {
-          background: #005582;
-        }
-      }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
     }
 
-    .general-preferences-settings {
-      background: #f9f9f9;
-      padding: 12px;
-      border-radius: 5px;
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-      label {
-        display: block;
-        margin: 8px 0;
-        font-weight: bold;
-        color: #333;
-      }
-      select,
-      input[type="checkbox"] {
-        width: 100%;
-        padding: 8px;
-        margin: 5px 0;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
-      .button-group {
-        display: flex;
-        gap: 5px;
-        margin-top: 10px;
-      }
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      font-family: "Nunito", sans-serif;
+      gap: 10px;
     }
 
-    .loading {
-      font-size: 18px;
-      font-weight: bold;
-      color: #0073b1;
+    button {
+      padding: 10px 15px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .edit-btn {
+      background: $primary;
+      color: $white;
+    }
+    .save-btn {
+      background: #28a745;
+      color: $white;
+    }
+    .cancel-btn {
+      background: #dc3545;
+      color: $white;
+    }
+    .change-password-btn {
+      background: $primary;
+      color: $white;
+    }
+
+    // Section containers
+    .profile-info,
+    .display-settings,
+    .general-preferences-settings,
+    .account-access-settings,
+    .visibility-profile-network-settings,
+    .visibility-activity-settings,
+    .data-privacy-settings {
+      background: $bg-light;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     }
   }
 }
 
-/* Dark mode styles applied when the body has the "dark" class */
+/* Dark Mode */
 body.dark {
-  background-color: #333;
+  background: #333;
   color: #fff;
 }
 
 body.dark .settings-container {
-  background-color: #222;
+  background: #222;
 }
 
 body.dark .settings-sidebar {
@@ -211,4 +196,51 @@ body.dark .settings-content {
 body.dark .sidebar-item,
 body.dark .sub-sidebar-item {
   color: #fff;
+}
+
+/* Responsive Styles */
+@media (max-width: $breakpoint-md) {
+  .settings-container {
+    flex-direction: column;
+  }
+  .settings-sidebar {
+    flex: 0 0 auto;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid ($primary, 20%);
+  }
+  .settings-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .settings-content {
+    padding: 15px;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  input,
+  textarea,
+  select {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+  button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: $breakpoint-xs) {
+  .settings-sidebar {
+    padding: 15px;
+  }
+  .settings-content {
+    padding: 10px;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
 }
