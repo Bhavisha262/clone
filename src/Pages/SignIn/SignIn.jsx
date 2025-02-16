@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import logo from "../../assets/Logo/logo.png"
 import "./SignIn.scss";
 
 const SignIn = () => {
@@ -35,7 +36,7 @@ const SignIn = () => {
   return (
     <div className="sign-in">
       <div className="sign-in__box">
-        <img src="/linkedin-logo.png" alt="LinkedIn Logo" className="sign-in__logo" />
+        <img src={logo} alt="LinkedIn Logo" className="sign-in__logo" />
         <h2>Sign in to LinkedIn</h2>
         <form onSubmit={handleSubmit}>
           <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} />

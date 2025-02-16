@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Settings.scss";
 import SignIn from "../SignIn/SignIn";
+import SignOut from "../SignOut/SignOut";
 
 const Settings = () => {
   // Top-level category: "account-preferences", "sign-in-security", "visibility", or "data-privacy"
@@ -184,6 +185,7 @@ const Settings = () => {
   };
 
   return (
+    <>
     <div className="settings-container">
       <div className="settings-sidebar">
         {/* Top-level category: Account Preferences */}
@@ -846,11 +848,14 @@ const Settings = () => {
               </div>
             </form>
           </div>
-        )}
-      </div>
 
-   
+        )}
+
+      </div>
+      
     </div>
+    <SignIn/>  
+    </>
   );
 };
 

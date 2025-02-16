@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Profile.scss';
+import SignOut from '../SignOut/SignOut';
 
 const Profile = () => {
   const [data, setData] = useState(null);
@@ -128,6 +129,7 @@ const Profile = () => {
                 courses.map((course, index) => <li key={index}>{course}</li>)}
             </ul>
           </div>
+           <SignOut/>
         </section>
         <aside className="right-column">
           <div className="card suggestions-card">

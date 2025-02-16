@@ -1,0 +1,18 @@
+.sign-out__button {
+    
+    padding: 10px 16px;
+    background: #0073b1;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    margin-top: 10px;
+  
+    &:hover {
+      background: #005f8c;
+    }
+  }
+  
