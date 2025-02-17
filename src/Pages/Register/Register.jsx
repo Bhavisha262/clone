@@ -31,7 +31,7 @@ const Register = () => {
     }
     try {
       setLoading(true);
-      const { data } = await axios.post("https://backl-main.vercel.app/register", formData);
+      const { data } = await axios.post("https://backl-main.vercel.app/new-account", formData);
       // Optionally store token or handle registration success here
       localStorage.setItem("token", data.token);
       navigate("/");
