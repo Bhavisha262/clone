@@ -213,6 +213,12 @@ body.dark .sub-sidebar-item {
   }
 }
 
+.sign{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 @media (max-width: $breakpoint-sm) {
   .settings-content {
     padding: 15px;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Settings.scss";
 import SignIn from "../SignIn/SignIn";
 import SignOut from "../SignOut/SignOut";
+import Register from "../Register/Register";
 
 const Settings = () => {
   // Top-level category: "account-preferences", "sign-in-security", "visibility", or "data-privacy"
@@ -854,7 +855,10 @@ const Settings = () => {
       </div>
       
     </div>
-    <SignIn/>  
+    <div className="sign">
+    <SignIn/>
+    <Register/> 
+    </div> 
     </>
   );
 };
