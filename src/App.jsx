@@ -8,6 +8,8 @@ import Messaging from "./Pages/Messaging/Messaging";
 import Notifications from "./Pages/Notifications/Notifications";
 import Settings from "./Pages/Settings/Settings";
 import Profile from "./Pages/Profile/Profile";
+import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
+import ResetPassword from "./Pages/ResetPassword/ResetPassword";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
       <Route path='/notifications' element={<Notifications/>}/>
       <Route path='/settings' element={<Settings/>}/>
       <Route path='/profile' element={<Profile/>}/>
+      <Route path='/forgot-password' element={<ForgotPassword/>}/>
+      <Route path='/reset-password' element={<ResetPassword/>}/>
       </Routes>
     </BrowserRouter>
     </>

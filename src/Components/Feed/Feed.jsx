@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import './Feed.scss';
-import RightSidebar from '../RightSidebar/RightSidebar';
+
 
 const Feed = () => {
   // Modal visibility states
