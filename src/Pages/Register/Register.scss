@@ -66,5 +66,57 @@
       margin: 10px 0;
       font-family: "Nunito", sans-serif;
     }
+  
+    // Tablet devices
+    @media (max-width: 768px) {
+      &__box {
+        width: 90%;
+        padding: 20px;
+      }
+  
+      h2 {
+        font-size: 20px;
+      }
+  
+      input {
+        padding: 10px;
+        font-size: 14px;
+      }
+  
+      &__button {
+        padding: 10px;
+        font-size: 14px;
+      }
+  
+      &__error {
+        font-size: 12px;
+      }
+    }
+  
+    // Mobile devices
+    @media (max-width: 480px) {
+      &__box {
+        width: 95%;
+        padding: 15px;
+      }
+  
+      h2 {
+        font-size: 18px;
+      }
+  
+      input {
+        padding: 8px;
+        font-size: 12px;
+      }
+  
+      &__button {
+        padding: 8px;
+        font-size: 12px;
+      }
+  
+      &__error {
+        font-size: 12px;
+      }
+    }
   }
   

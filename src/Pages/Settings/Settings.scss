@@ -211,11 +211,18 @@ body.dark .sub-sidebar-item {
   .settings-content {
     padding: 20px;
   }
+  .sign{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .sign{
   display: flex;
   justify-content: space-evenly;
+  gap: 30px;
   align-items: center;
 }
 
@@ -236,6 +243,12 @@ body.dark .sub-sidebar-item {
     padding: 8px 12px;
     font-size: 0.9rem;
   }
+  .sign{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media (max-width: $breakpoint-xs) {
@@ -247,5 +260,11 @@ body.dark .sub-sidebar-item {
   }
   h2 {
     font-size: 1.6rem;
+  }
+  .sign{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
   }
 }
