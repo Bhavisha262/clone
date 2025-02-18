@@ -12,11 +12,13 @@ import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Pages/ResetPassword/ResetPassword";
 import Footer from "./Components/Footer/Footer";
 import About from "./Pages/About/About";
+import GotoTop from "./Components/GotoTop";
 
 function App() {
   return (
     <>
     <BrowserRouter>
+    <GotoTop/>
       <Header/>
       <Routes>
       <Route path='/' element={<Home/>}/>

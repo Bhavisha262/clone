@@ -1,13 +1,15 @@
 import React from "react";
 import "./Footer.scss";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 const Footer = () => {
+  const Navigate = useNavigate()
   return (
     <footer className="linkedin-footer">
       <div className="footer-top">
         <ul>
-          <Link to='/about'><li>About</li></Link>
+          <li onClick={() => Navigate('/about')}>About</li>
           <li>Accessibility</li>
           <li>Help Center</li>
         </ul>

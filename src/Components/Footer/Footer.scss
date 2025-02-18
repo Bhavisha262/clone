@@ -4,6 +4,7 @@
   padding: 60px 10%;
   font-size: 14px;
   color: lemonchiffon;
+  font-family: "Nunito", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,7 +52,7 @@
       padding: 0;
       margin: 0;
 
-      li {
+      li{
         margin-bottom: 8px;
         cursor: pointer;
         transition: color 0.3s ease;
@@ -60,6 +61,8 @@
           color: cyan;
         }
       }
+  
+     
     }
 
     @media (max-width: 768px) {
