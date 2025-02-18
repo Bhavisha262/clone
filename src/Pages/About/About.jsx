@@ -5,6 +5,7 @@ const About = () => {
   return (
     <div className="about-page">
       <header className="about-header">
+      <div class="background-elements"></div>
         <div className="header-content">
           <h1>About LinkedIn</h1>
           <p>Connecting professionals around the world</p>

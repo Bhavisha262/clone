@@ -27,7 +27,7 @@ const Footer = () => {
         </ul>
       </div>
       <div className="footer-bottom">
-        <p>JobedIn © {new Date().getFullYear()}</p>
+        <p>JOBEDIN © {new Date().getFullYear()}</p>
       </div>
     </footer>
   );
