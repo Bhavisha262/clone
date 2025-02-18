@@ -1,0 +1,94 @@
+.about-page {
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  /* Hero Section with Animated Wave Background */
+  .about-header {
+    position: relative;
+    background-color: #004182;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .header-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .about-header::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 120px;
+    background: linear-gradient(to top, rgba(255,255,255,0.3), transparent);
+    clip-path: ellipse(150% 80px at 50% 100%);
+    animation: waveMove 6s ease-in-out infinite alternate;
+    opacity: 0.6;
+    z-index: 1;
+  }
+  
+  .about-header::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 200%;
+    height: 100px;
+    background: rgba(255,255,255,0.2);
+    clip-path: ellipse(150% 70px at 50% 100%);
+    animation: waveMove2 8s ease-in-out infinite alternate-reverse;
+    opacity: 0.5;
+    z-index: 0;
+  }
+  
+  @keyframes waveMove {
+    0% {
+      transform: translateX(-20px);
+    }
+    100% {
+      transform: translateX(20px);
+    }
+  }
+  
+  @keyframes waveMove2 {
+    0% {
+      transform: translateX(20px);
+    }
+    100% {
+      transform: translateX(-20px);
+    }
+  }
+  
+  /* About Content Section */
+  .about-content {
+    background-color: #f3f2ef;
+    padding: 40px 20px;
+  }
+  
+  .section {
+    background: #fff;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .section h2 {
+    color: #004182;
+    margin-bottom: 15px;
+  }
+  
+  .section p {
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  

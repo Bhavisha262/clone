@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="linkedin-footer">
       <div className="footer-top">
         <ul>
-          <li>About</li>
+          <Link to='/about'><li>About</li></Link>
           <li>Accessibility</li>
           <li>Help Center</li>
         </ul>

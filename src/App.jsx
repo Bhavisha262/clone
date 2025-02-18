@@ -11,6 +11,7 @@ import Profile from "./Pages/Profile/Profile";
 import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Pages/ResetPassword/ResetPassword";
 import Footer from "./Components/Footer/Footer";
+import About from "./Pages/About/About";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Header/>
       <Routes>
       <Route path='/' element={<Home/>}/>
+      <Route path='/about' element={<About/>}/>
       <Route path='/network' element={<Network/>}/>
       <Route path='/jobs' element={<Jobs/>}/>
       <Route path='/messaging' element={<Messaging/>}/>

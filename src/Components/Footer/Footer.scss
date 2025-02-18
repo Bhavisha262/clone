@@ -1,44 +1,88 @@
 .linkedin-footer {
-  background-color:#004182;
-    padding: 20px 10%;
-    font-size: 14px;
-    color: lemonchiffon;
+  position: relative;
+  background-color: #004182;
+  padding: 60px 10%;
+  font-size: 14px;
+  color: lemonchiffon;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+
+  // First wave layer (front)
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'><path d='M0,40 Q300,80 600,40 T1200,40 V120 H0 Z' fill='%23ffffff55'/></svg>") no-repeat bottom;
+    background-size: cover;
+    animation: wave-vertical 5s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  // Second wave layer (back)
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'><path d='M0,50 Q300,90 600,50 T1200,50 V120 H0 Z' fill='%23ffffff33'/></svg>") no-repeat bottom;
+    background-size: cover;
+    animation: wave-vertical 7s ease-in-out infinite;
+    animation-delay: -2s;
+    z-index: 0;
+  }
+
+  .footer-top {
+    position: relative;
+    z-index: 1;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-  
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 1100px;
-  
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        
-        li {
-          margin-bottom: 8px;
-          cursor: pointer;
-          transition: color 0.3s ease;
-  
-          &:hover {
-            color: cyan;
-          }
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1100px;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 8px;
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: cyan;
         }
       }
-  
-      @media (max-width: 768px) {
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
-      }
     }
-  
-    .footer-bottom {
-      margin-top: 15px;
-      font-weight: bold;
+
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
     }
   }
-  
+
+  .footer-bottom {
+    position: relative;
+    z-index: 1;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+}
+
+// Keyframes for vertical wave movement
+@keyframes wave-vertical {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
