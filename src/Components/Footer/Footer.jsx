@@ -11,7 +11,7 @@ const Footer = () => {
         <ul>
           <li onClick={() => Navigate('/about')}>About</li>
           <li onClick={() => Navigate('/accessibility')}>Accessibility</li>
-          <li>Help Center</li>
+          <li onClick={() => Navigate('/help')}>Help Center</li>
         </ul>
         <ul>
           <li>Privacy & Terms</li>

@@ -14,6 +14,7 @@ import Footer from "./Components/Footer/Footer";
 import About from "./Pages/About/About";
 import GotoTop from "./Components/GotoTop";
 import Accessibility from "./Pages/Accessibility/Accessibility";
+import HelpCenter from "./Pages/HelpCenter/HelpCenter";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/accessibility' element={<Accessibility/>}/>
+      <Route path='/help' element={<HelpCenter/>}/>
       <Route path='/network' element={<Network/>}/>
       <Route path='/jobs' element={<Jobs/>}/>
       <Route path='/messaging' element={<Messaging/>}/>
