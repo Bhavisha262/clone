@@ -10,7 +10,7 @@
   justify-content: space-evenly;
   align-items: center;
   overflow: hidden;
-
+  border-top: 3px solid cyan;
   // First wave layer (front)
   &::before {
     content: "";

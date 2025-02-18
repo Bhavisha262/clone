@@ -1,4 +1,3 @@
-/* Base Styles */
 .about-page {
   font-family: "Nunito", sans-serif;
   color: black;
@@ -7,79 +6,143 @@
 /* Hero Section */
 .about-header {
   position: relative;
-  background-color: #820050;
-  height: 300px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(120deg, #820050, #800026); // Stylish LinkedIn color theme
+  padding: 80px 50px;
+  color: white;
   text-align: center;
-  color: #fff;
-  animation: slideInDiagonal 1.2s ease-in-out;
-}
-
-/* Positioning the background elements */
-.background-elements {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   overflow: hidden;
-  z-index: 0;
+  font-family: "Nunito", sans-serif;
+  /* Diagonal Cut Effect */
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
 }
 
-/* Styling individual shapes */
-.shape {
+/* Floating Overlapping Layers */
+.about-header::before,
+.about-header::after {
+  content: "";
   position: absolute;
-  opacity: 0.3;
+  width: 100%;
+  height: 120px;
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
-  animation: float 10s infinite ease-in-out;
+  backdrop-filter: blur(10px);
 }
 
-/* Specific shapes */
-.shape.polygon {
+.about-header::before {
+  top: -20px;
+  left: 0;
+  transform: skewY(-4deg);
+}
+
+.about-header::after {
+  bottom: -20px;
+  left: 0;
+  transform: skewY(4deg);
+}
+
+/* Glowing Floating Shapes */
+.about-header .shape {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: floatShapes 6s infinite ease-in-out;
+}
+
+.shape.one {
   width: 150px;
   height: 150px;
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  top: 20%;
+  left: 10%;
+  animation-duration: 6s;
+  animation-delay: 3s;
 }
 
-.shape.hexagon {
+.shape.two {
   width: 120px;
-  height: 104px;
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  height: 120px;
+  top: 40%;
+  right: 5%;
+  animation-duration: 8s;
+  animation-delay: 1s;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  background: rgba(255, 255, 255, 0.4);
 }
 
-.shape.wave {
-  width: 200%;
-  height: 200px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
-  background-size: 50px 50px;
-  animation: wave 15s infinite linear;
+
+.shape.three {
+  position: absolute;
+  bottom: 30%;
+  left: 70%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.3);
 }
 
-/* Animations */
-@keyframes float {
+.shape.three::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.shape.three::after {
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+
+
+@keyframes floatShapes {
   0% {
-    transform: translateY(0);
+    transform: translateY(0) translateX(0);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-30px) translateX(30px);
   }
   100% {
-    transform: translateY(0);
+    transform: translateY(0) translateX(0);
   }
 }
 
-@keyframes wave {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+/* Stylish Title */
+.about-header .header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.about-header h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: lemonchiffon;
+}
+
+.about-header p {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  color: lightpink;
 }
 
 /* Floating Text Effect */
@@ -114,6 +177,13 @@
   opacity: 0;
   transform: translateY(40px);
   animation: fadeInStaggered 1s ease-in-out forwards;
+
+  h2{
+    color: #004182;
+  }
+  p{
+    color: black;
+  }
 }
 
 /* Glassmorphism Hover Effect */

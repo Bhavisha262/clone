@@ -5,11 +5,14 @@ const About = () => {
   return (
     <div className="about-page">
       <header className="about-header">
-      <div class="background-elements"></div>
         <div className="header-content">
           <h1>About LinkedIn</h1>
           <p>Connecting professionals around the world</p>
         </div>
+        {/* Floating shapes in the background */}
+        <div className="shape one"></div>
+        <div className="shape two"></div>
+        <div className="shape three"></div>
       </header>
       <main className="about-content">
         <section className="section">

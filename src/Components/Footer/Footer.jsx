@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="footer-top">
         <ul>
           <li onClick={() => Navigate('/about')}>About</li>
-          <li>Accessibility</li>
+          <li onClick={() => Navigate('/accessibility')}>Accessibility</li>
           <li>Help Center</li>
         </ul>
         <ul>
