@@ -14,7 +14,29 @@
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
   }
   
-  /* Floating Shapes */
+   .help-center-header::before,
+  .help-center-header::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  
+  .help-center-header::before {
+    top: -20px;
+    left: 0;
+    transform: skewY(-4deg);
+  }
+  
+  .help-center-header::after {
+    bottom: -20px;
+    left: 0;
+    transform: skewY(4deg);
+  }
+  
+  /* Glowing Floating Shapes */
   .help-center-header .shape {
     position: absolute;
     background: rgba(255, 255, 255, 0.4);
