@@ -23,7 +23,7 @@ const Footer = () => {
         </ul>
         <ul>
           <li>Get the JobedIn App</li>
-          <li>More</li>
+          <li onClick={() => Navigate('/more')}>More</li>
         </ul>
       </div>
       <div className="footer-bottom">

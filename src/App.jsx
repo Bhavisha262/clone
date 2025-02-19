@@ -19,6 +19,7 @@ import PrivacyTerms from "./Pages/Privacy/PrivacyTerms";
 import Advertising from "./Pages/Advertising/Advertising";
 import AdChoices from "./Pages/AdChoices/AdChoices";
 import BusinessServices from "./Pages/BusinessServices/BusinessServices";
+import More from "./Pages/More/More";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
       <Route path='/advertising' element={<Advertising/>}/>
       <Route path='/adchoices' element={<AdChoices/>}/>
       <Route path='/business' element={<BusinessServices/>}/>
+      <Route path='/more' element={<More/>}/>
       <Route path='/help' element={<HelpCenter/>}/>
       <Route path='/privacy' element={<PrivacyTerms/>}/>
       <Route path='/network' element={<Network/>}/>

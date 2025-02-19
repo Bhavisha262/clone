@@ -1,0 +1,33 @@
+.footer-more {
+    font-family: "Nunito", sans-serif;
+    margin-top: 20px;
+  
+    h3 {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #004182;
+      margin-bottom: 10px;
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+      
+      li {
+        margin-bottom: 8px;
+  
+        a {
+          text-decoration: none;
+          color: #0073b1;
+          font-size: 0.95rem;
+          transition: color 0.3s ease-in-out;
+  
+          &:hover {
+            color: #004182;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  
