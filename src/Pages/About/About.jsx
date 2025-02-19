@@ -6,7 +6,7 @@ const About = () => {
     <div className="about-page">
       <header className="about-header">
         <div className="header-content">
-          <h1>About LinkedIn</h1>
+          <h1>About JobedIn</h1>
           <p>Connecting professionals around the world</p>
         </div>
         {/* Floating shapes in the background */}
