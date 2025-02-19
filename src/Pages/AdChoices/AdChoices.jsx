@@ -9,6 +9,9 @@ const AdChoices = () => {
           <h1>Ad Choices</h1>
           <p>Understand and control the ads you see on LinkedIn.</p>
         </div>
+        <div className="shape one"></div>
+        <div className="shape two"></div>
+        <div className="shape three"></div>
       </header>
 
       <main className="adchoices-content">
