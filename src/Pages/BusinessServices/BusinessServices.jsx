@@ -6,9 +6,12 @@ const BusinessServices = () => {
     <div className="business-services-page">
       <header className="business-services-header">
         <div className="header-content">
-          <h1>LinkedIn Business Services</h1>
+          <h1>Business Services</h1>
           <p>Get the right tools to grow your business on LinkedIn.</p>
         </div>
+        <div className="shape one"></div>
+        <div className="shape two"></div>
+        <div className="shape three"></div>
       </header>
 
       <main className="business-services-content">
