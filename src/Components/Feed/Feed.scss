@@ -1,18 +1,20 @@
 /* Overall Feed layout */
 .feed {
   display: flex;
+  flex-direction: column; /* Ensure items are in a row */
   justify-content: center;
-  padding: 20px;
+  align-items: flex-start; /* Align items at the top */
   gap: 20px;
 
-  &__left {
-    width: 300px;
-  }
-
-  &__right {
-    flex: 1;
-  }
+ .feed__left {
+  width: 400px; 
 }
+
+.feed__right {
+  width: 400px; 
+}
+
+
 
 /* Profile Card Styles */
 .profile-card {
@@ -256,4 +258,5 @@
   border-radius: 4px;
   opacity: 0.9;
   z-index: 1001;
+}
 }

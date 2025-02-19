@@ -51,7 +51,8 @@ const Post = () => {
   };
 
   return (
-    <div className="feed">
+    <div className="post">
+      
       {posts.map((postData) => (
         <div key={postData.id} className="post-card">
           {/* Header Section */}

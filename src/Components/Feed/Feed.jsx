@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import './Feed.scss';
 
-
 const Feed = () => {
   // Modal visibility states
   const [showEventModal, setShowEventModal] = useState(false);
