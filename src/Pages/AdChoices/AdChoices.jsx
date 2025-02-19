@@ -1,50 +1,61 @@
-import React, { useState } from "react";
+import React from "react";
 import "./AdChoices.scss";
 
 const AdChoices = () => {
-  const [highContrast, setHighContrast] = useState(false);
-
   return (
-    <div className={`adchoices-page ${highContrast ? "high-contrast" : ""}`}>
-      {/* Header Section */}
+    <div className="adchoices-page">
       <header className="adchoices-header">
-        <div className="shape one"></div>
-        <div className="shape two"></div>
-        <div className="shape three"></div>
         <div className="header-content">
-          <h1>AdChoices</h1>
-          <p>Learn how LinkedIn personalizes your ad experience</p>
+          <h1>Ad Choices</h1>
+          <p>Understand and control the ads you see on LinkedIn.</p>
         </div>
       </header>
 
-      {/* Content Section */}
       <main className="adchoices-content">
         <section className="section">
           <h2>What is AdChoices?</h2>
-          <p>LinkedIn uses the AdChoices program to provide transparency and control over your ad experience.</p>
+          <p>
+            LinkedIn participates in self-regulatory advertising programs to
+            give you control over personalized ads.
+          </p>
         </section>
 
         <section className="section">
-          <h2>How We Personalize Ads</h2>
-          <p>We use your profile data, activity, and preferences to show relevant ads.</p>
+          <h2>How does LinkedIn use AdChoices?</h2>
+          <p>
+            LinkedIn follows industry guidelines and provides options to manage
+            interest-based advertising preferences.
+          </p>
         </section>
 
         <section className="section">
-          <h2>Manage Your Ad Preferences</h2>
-          <p>You can adjust your ad settings to control the types of ads you see on LinkedIn.</p>
+          <h2>How to opt out?</h2>
+          <p>
+            You can adjust your ad preferences in LinkedIn’s settings or visit{" "}
+            <a
+              href="https://optout.aboutads.info"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              optout.aboutads.info
+            </a>{" "}
+            to manage choices across platforms.
+          </p>
         </section>
 
-        {/* High Contrast Mode Toggle */}
         <section className="section">
-          <h2>Accessibility Settings</h2>
-          <label className="toggle-switch">
-            <input
-              type="checkbox"
-              onChange={() => setHighContrast(!highContrast)}
-            />
-            <span className="slider"></span>
-          </label>
-          <p>Enable high contrast mode for better visibility.</p>
+          <h2>Learn more</h2>
+          <p>
+            For more details on LinkedIn’s advertising policies, visit our{" "}
+            <a
+              href="https://www.linkedin.com/help/linkedin/answer/62931"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Help Center
+            </a>
+            .
+          </p>
         </section>
       </main>
     </div>
