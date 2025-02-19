@@ -19,7 +19,7 @@ const Footer = () => {
         </ul>
         <ul>
           <li onClick={() => Navigate('/advertising')}>Advertising</li>
-          <li>Business Services</li>
+          <li onClick={() => Navigate('/business')}>Business Services</li>
         </ul>
         <ul>
           <li>Get the JobedIn App</li>

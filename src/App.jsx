@@ -18,6 +18,7 @@ import HelpCenter from "./Pages/HelpCenter/HelpCenter";
 import PrivacyTerms from "./Pages/Privacy/PrivacyTerms";
 import Advertising from "./Pages/Advertising/Advertising";
 import AdChoices from "./Pages/AdChoices/AdChoices";
+import BusinessServices from "./Pages/BusinessServices/BusinessServices";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
       <Route path='/accessibility' element={<Accessibility/>}/>
       <Route path='/advertising' element={<Advertising/>}/>
       <Route path='/adchoices' element={<AdChoices/>}/>
+      <Route path='/business' element={<BusinessServices/>}/>
       <Route path='/help' element={<HelpCenter/>}/>
       <Route path='/privacy' element={<PrivacyTerms/>}/>
       <Route path='/network' element={<Network/>}/>
