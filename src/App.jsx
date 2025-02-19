@@ -16,8 +16,8 @@ import GotoTop from "./Components/GotoTop";
 import Accessibility from "./Pages/Accessibility/Accessibility";
 import HelpCenter from "./Pages/HelpCenter/HelpCenter";
 import PrivacyTerms from "./Pages/Privacy/PrivacyTerms";
-import AdCenter from "./Pages/AdCenter/AdCenter";
 import Advertising from "./Pages/Advertising/Advertising";
+import AdChoices from "./Pages/AdChoices/AdChoices";
 
 function App() {
   return (
@@ -30,6 +30,7 @@ function App() {
       <Route path='/about' element={<About/>}/>
       <Route path='/accessibility' element={<Accessibility/>}/>
       <Route path='/advertising' element={<Advertising/>}/>
+      <Route path='/adchoices' element={<AdChoices/>}/>
       <Route path='/help' element={<HelpCenter/>}/>
       <Route path='/privacy' element={<PrivacyTerms/>}/>
       <Route path='/network' element={<Network/>}/>

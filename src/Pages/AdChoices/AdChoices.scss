@@ -1,0 +1,230 @@
+.adchoices-page {
+    font-family: "Nunito", sans-serif;
+    color: black;
+  }
+  
+  /* Header Section */
+  .adchoices-header {
+    position: relative;
+    background: linear-gradient(120deg, #0056a1, #004182);
+    padding: 80px 50px;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+  }
+  
+  /* Floating Overlapping Layers */
+  .adchoices-header::before,
+  .adchoices-header::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  
+  .adchoices-header::before {
+    top: -20px;
+    left: 0;
+    transform: skewY(-4deg);
+  }
+  
+  .adchoices-header::after {
+    bottom: -20px;
+    left: 0;
+    transform: skewY(4deg);
+  }
+  
+  /* Floating Shapes */
+  .adchoices-header .shape {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    animation: floatShapes 6s infinite ease-in-out;
+  }
+  
+  .shape.one {
+    width: 150px;
+    height: 150px;
+    top: 20%;
+    left: 10%;
+    animation-duration: 6s;
+    animation-delay: 3s;
+  }
+  
+  .shape.two {
+    width: 120px;
+    height: 120px;
+    top: 40%;
+    right: 5%;
+    animation-duration: 8s;
+    animation-delay: 1s;
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+  }
+  
+  .shape.three {
+    position: absolute;
+    bottom: 30%;
+    left: 70%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  
+  .shape.three::before,
+  .shape.three::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  
+  .shape.three::before {
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+  }
+  
+  .shape.three::after {
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+  }
+  
+  @keyframes floatShapes {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    50% {
+      transform: translateY(-30px) translateX(30px);
+    }
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+  }
+  
+  .adchoices-header .header-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .adchoices-header h1 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    color: white;
+  }
+  
+  .adchoices-header p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    color: #d3e3fc;
+  }
+  
+  /* Content Section */
+  .adchoices-content {
+    padding: 40px 20px;
+  }
+  
+  .section {
+    background: #fff;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInStaggered 1s ease-in-out forwards;
+  
+    h2 {
+      color: #004182;
+    }
+  
+    p {
+      color: black;
+    }
+  }
+  
+  /* Toggle Switch */
+  .toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    display: inline-block;
+  }
+  
+  .toggle-switch input {
+    display: none;
+  }
+  
+  .toggle-switch .slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ccc;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  
+  .toggle-switch input:checked + .slider {
+    background: #004182;
+  }
+  
+  .slider::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    top: 2px;
+    left: 2px;
+    transition: 0.4s;
+  }
+  
+  input:checked + .slider::before {
+    transform: translateX(25px);
+  }
+  
+  /* Animations */
+  @keyframes fadeInStaggered {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* High Contrast Mode */
+  .high-contrast {
+    background: #000;
+    color: yellow;
+  
+    .section {
+      background: #222;
+      color: yellow;
+      border: 2px solid yellow;
+    }
+  }
+  
