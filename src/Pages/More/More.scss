@@ -3,13 +3,17 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(120deg, #820050, #800026);
     max-width: 800px;
     margin: 20px auto;
   
     .more-title {
-      font-size: 1.5rem;
+      font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: lemonchiffon;
       font-weight: bold;
-      color: #004182;
+      text-align: center;
       margin-bottom: 15px;
     }
   
@@ -23,7 +27,7 @@
         padding: 15px;
         border-radius: 6px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border-left: 4px solid #0073b1;
+        border-left: 4px solid lightpink;
   
         &:hover {
           transform: translateY(-3px);
