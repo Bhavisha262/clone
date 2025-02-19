@@ -17,6 +17,7 @@ import Accessibility from "./Pages/Accessibility/Accessibility";
 import HelpCenter from "./Pages/HelpCenter/HelpCenter";
 import PrivacyTerms from "./Pages/Privacy/PrivacyTerms";
 import AdCenter from "./Pages/AdCenter/AdCenter";
+import Advertising from "./Pages/Advertising/Advertising";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/accessibility' element={<Accessibility/>}/>
-      <Route path='/adcenter' element={<AdCenter/>}/>
+      <Route path='/advertising' element={<Advertising/>}/>
       <Route path='/help' element={<HelpCenter/>}/>
       <Route path='/privacy' element={<PrivacyTerms/>}/>
       <Route path='/network' element={<Network/>}/>
