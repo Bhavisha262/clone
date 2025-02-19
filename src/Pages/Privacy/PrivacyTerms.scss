@@ -1,0 +1,113 @@
+.privacy-terms-page {
+    font-family: Arial, sans-serif;
+    color: #333;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  
+    .privacy-terms-header {
+      position: relative;
+      text-align: center;
+      background: linear-gradient(135deg, #0073b1, #004182);
+      padding: 50px 20px;
+      color: white;
+      border-radius: 10px;
+      overflow: hidden;
+  
+      .header-content {
+        position: relative;
+        z-index: 2;
+      }
+  
+      h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        font-size: 16px;
+      }
+  
+      .shape {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+      }
+  
+      .one {
+        width: 60px;
+        height: 60px;
+        top: 10px;
+        left: 10px;
+      }
+  
+      .two {
+        width: 80px;
+        height: 80px;
+        bottom: 20px;
+        right: 20px;
+      }
+  
+      .three {
+        width: 50px;
+        height: 50px;
+        top: 30px;
+        right: 50px;
+      }
+    }
+  
+    .privacy-terms-content {
+      margin-top: 30px;
+  
+      .section {
+        margin-bottom: 30px;
+  
+        h2 {
+          font-size: 24px;
+          margin-bottom: 10px;
+          border-bottom: 2px solid #0073b1;
+          padding-bottom: 5px;
+        }
+  
+        .policy-item {
+          background: #f9f9f9;
+          border-radius: 5px;
+          padding: 15px;
+          margin: 10px 0;
+          cursor: pointer;
+          transition: 0.3s;
+  
+          &:hover {
+            background: #e0e0e0;
+          }
+  
+          .policy-title {
+            font-size: 18px;
+            font-weight: bold;
+          }
+  
+          .policy-content {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #555;
+          }
+        }
+  
+        .help-btn {
+          background: #0073b1;
+          color: white;
+          padding: 10px 15px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+          transition: 0.3s;
+  
+          &:hover {
+            background: #005a8e;
+          }
+        }
+      }
+    }
+  }
+  
