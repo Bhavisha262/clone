@@ -15,7 +15,7 @@ const Footer = () => {
         </ul>
         <ul>
           <li onClick={() => Navigate('/privacy')}>Privacy & Terms</li>
-          <li>Ad Choices</li>
+          <li onClick={() => Navigate('/adcenter')}>Ad Choices</li>
         </ul>
         <ul>
           <li>Advertising</li>

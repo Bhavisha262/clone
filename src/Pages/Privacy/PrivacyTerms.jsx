@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./PrivacyTerms.scss";
+import {useNavigate } from "react-router-dom";
 
 const PrivacyTerms = () => {
+    const Navigate = useNavigate()
   const [sections, setSections] = useState([
     {
       title: "Privacy Policy",
@@ -60,7 +62,7 @@ const PrivacyTerms = () => {
         <div className="section">
           <h2>Need More Help?</h2>
           <p>For further assistance, please visit our Help Center.</p>
-          <button className="help-btn">Visit Help Center</button>
+          <button className="help-btn" onClick={() => Navigate('/help')}>Visit Help Center</button>
         </div>
       </div>
     </div>
