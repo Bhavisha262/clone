@@ -11,14 +11,15 @@ $comment-box-bg: #f8f9fa;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  font-family: "Nunito", sans-serif;
 
   .post-card {
     border: 1px solid $border-color;
+    font-family: "Nunito", sans-serif;
     border-radius: 8px;
     padding: 16px;
     background-color: $post-bg;
     transition: box-shadow 0.3s ease;
-    font-family: Arial, sans-serif;
     position: relative;
 
     &:hover {
@@ -151,7 +152,7 @@ $comment-box-bg: #f8f9fa;
       .like-container {
         position: relative;
         display: inline-block;
-
+      
         .reactions-popup {
           display: flex;
           position: absolute;
@@ -164,12 +165,12 @@ $comment-box-bg: #f8f9fa;
           padding: 8px;
           gap: 8px;
           z-index: 10;
-
+      
           .reaction-item {
             font-size: 22px;
             cursor: pointer;
             transition: transform 0.2s ease;
-
+      
             &:hover {
               transform: scale(1.2);
             }
@@ -229,7 +230,9 @@ $comment-box-bg: #f8f9fa;
   }
 }
 
-// Responsive Design (for different screen sizes)
+/* Responsive Design */
+
+/* For screens up to 1024px (Laptops/Tablets) */
 @media screen and (max-width: 1024px) {
   .post-card {
     padding: 14px;
@@ -249,6 +252,7 @@ $comment-box-bg: #f8f9fa;
   }
 }
 
+/* For screens up to 768px (Tablets) */
 @media screen and (max-width: 768px) {
   .post-card {
     padding: 12px;
@@ -274,6 +278,7 @@ $comment-box-bg: #f8f9fa;
   }
 }
 
+/* For screens up to 480px (Mobile Phones) */
 @media screen and (max-width: 480px) {
   .post-card {
     padding: 10px;
