@@ -61,7 +61,7 @@ const Notifications = () => {
           </div>
         </div>
         <div className="manage-notifications-card">
-          <button >Manage Your Notifications</button>
+          <button onClick={toggleModal}>Manage Your Notifications</button>
         </div>
       </div>
 
@@ -76,7 +76,9 @@ const Notifications = () => {
 
       {/* Notifications List */}
       <div className="notifications-list">
-        {filteredNotifications.length > 0 ? (
+        {loading ? (
+          <div className="loader">Loading notifications...</div>
+        ) : filteredNotifications.length > 0 ? (
           filteredNotifications.map((notification) => (
             <div key={notification.id} className="notification-item">
               <img src={notification.avatar || 'https://via.placeholder.com/40'} alt="Avatar" />
@@ -98,8 +100,44 @@ const Notifications = () => {
         <button onClick={handleFollow}>{isFollowing ? 'Following' : 'Follow'}</button>
       </div>
 
+      {/* Manage Notifications Modal */}
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <h3>Manage Your Notifications</h3>
+            <form>
+              <div className="notification-option">
+                <label>
+                  <input type="checkbox" defaultChecked />
+                  Email Notifications
+                </label>
+              </div>
+              <div className="notification-option">
+                <label>
+                  <input type="checkbox" defaultChecked />
+                  Push Notifications
+                </label>
+              </div>
+              <div className="notification-option">
+                <label>
+                  <input type="checkbox" />
+                  SMS Notifications
+                </label>
+              </div>
+              <div className="modal__actions">
+                <button type="button" onClick={toggleModal}>
+                  Cancel
+                </button>
+                <button type="submit" onClick={(e) => { e.preventDefault(); toggleModal(); }}>
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
-      {/* Snackbar for Follow Message */}
+      {/* Snackbar Notification */}
       {snackbarMessage && <div className="snackbar">{snackbarMessage}</div>}
     </div>
   );
