@@ -12,7 +12,9 @@ const Home = () => {
         <Feed/>
         <RightSidebar/>
       </div>
-    <Post/>
+ <div className="sec2">
+ <Post/>
+ </div>
   </div>
   </>
   )
