@@ -10,7 +10,7 @@ const Advertising = () => {
       title: "Sponsored Content",
       description: "Create engaging content that appears in the LinkedIn feed.",
       buttonText: "Create Ad",
-      path: "/ads/create",
+      path: "/createad",
     },
     {
       title: "Campaign Manager",

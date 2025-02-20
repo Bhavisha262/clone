@@ -37,6 +37,7 @@ function App() {
       <Route path='/accessibility' element={<Accessibility/>}/>
       <Route path='/advertising' element={<Advertising/>}/>
       <Route path='/adchoices' element={<AdChoices/>}/>
+      <Route path='/createad' element={<BusinessServices/>}/>
       <Route path='/business' element={<BusinessServices/>}/>
       <Route path='/more' element={<More/>}/>
       <Route path='/help' element={<HelpCenter/>}/>

@@ -1,0 +1,236 @@
+// Variables
+$post-bg: #fff;
+$border-color: #ddd;
+$primary-color: #0073b1;
+$hover-color: #005582;
+$text-color: #333;
+$light-gray: #f3f2ef;
+
+// Overall Create Ad Page
+.create-ad-page {
+  font-family: "Nunito", sans-serif;
+  color: $text-color;
+}
+
+/* Header Section */
+.create-ad-header {
+  position: relative;
+  background: linear-gradient(120deg, #0056a1, #004182);
+  padding: 80px 50px;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+
+  .header-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+
+  p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    color: #d3e3fc;
+  }
+}
+
+/* Floating Shapes (Same as Advertising) */
+.create-ad-header .shape {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: floatShapes 6s infinite ease-in-out;
+}
+
+.shape.one {
+  width: 150px;
+  height: 150px;
+  top: 20%;
+  left: 10%;
+  animation-duration: 6s;
+  animation-delay: 3s;
+}
+
+.shape.two {
+  width: 120px;
+  height: 120px;
+  top: 40%;
+  right: 5%;
+  animation-duration: 8s;
+  animation-delay: 1s;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.shape.three {
+  position: absolute;
+  bottom: 30%;
+  left: 70%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.shape.three::before,
+.shape.three::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.shape.three::before {
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+}
+
+.shape.three::after {
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+}
+
+@keyframes floatShapes {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-30px) translateX(30px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+/* Content/Form Section */
+.create-ad-content {
+  padding: 40px 20px;
+}
+
+.create-ad-form {
+  max-width: 800px;
+  margin: auto;
+}
+
+.section {
+  background: $post-bg;
+  padding: 30px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    color: #004182;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: $text-color;
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+  }
+}
+
+/* Create Ad Button */
+.create-ad-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: $hover-color;
+  }
+}
+
+/* Responsive Design */
+
+/* For screens up to 1024px (Laptops/Tablets) */
+@media (max-width: 1024px) {
+  .create-ad-header {
+    padding: 60px 30px;
+  }
+
+  .create-ad-form {
+    padding: 20px;
+  }
+}
+
+/* For screens up to 768px (Tablets) */
+@media (max-width: 768px) {
+  .create-ad-header {
+    padding: 50px 20px;
+  }
+
+  .create-ad-content {
+    padding: 20px 10px;
+  }
+
+  .section {
+    padding: 20px;
+    margin-bottom: 15px;
+  }
+}
+
+/* For screens up to 480px (Mobile Phones) */
+@media (max-width: 480px) {
+  .create-ad-header {
+    padding: 40px 10px;
+  }
+
+  .create-ad-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .section {
+    label {
+      font-size: 13px;
+    }
+    
+    input,
+    select {
+      font-size: 13px;
+      padding: 8px;
+    }
+  }
+}
