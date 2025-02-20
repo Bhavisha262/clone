@@ -21,6 +21,7 @@ import AdChoices from "./Pages/AdChoices/AdChoices";
 import BusinessServices from "./Pages/BusinessServices/BusinessServices";
 import More from "./Pages/More/More";
 import CreateAd from "./Pages/Advertising/CreateAd/CreateAd";
+import CampaignManager from "./Pages/Advertising/Campaign/CampaignManager";
 
 
 
@@ -38,7 +39,8 @@ function App() {
       <Route path='/accessibility' element={<Accessibility/>}/>
       <Route path='/advertising' element={<Advertising/>}/>
       <Route path='/adchoices' element={<AdChoices/>}/>
-      <Route path='/createad' element={<CreateAd/>}/>
+      <Route path='/create-ad' element={<CreateAd/>}/>
+      <Route path='/campaign-manager' element={<CampaignManager/>}/>
       <Route path='/business' element={<BusinessServices/>}/>
       <Route path='/more' element={<More/>}/>
       <Route path='/help' element={<HelpCenter/>}/>

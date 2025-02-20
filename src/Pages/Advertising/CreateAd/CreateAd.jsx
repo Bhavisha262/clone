@@ -11,6 +11,7 @@ const CreateAd = () => {
     budget: "",
     schedule: "",
   });
+  const [snackbar, setSnackbar] = useState({ show: false, message: "" });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,8 +25,13 @@ const CreateAd = () => {
     e.preventDefault();
     // Process formData (e.g., call API)
     console.log("Ad Campaign Data:", formData);
-    // Navigate to advertising overview after submission
-    navigate("/advertising");
+    // Show snackbar message for success
+    setSnackbar({ show: true, message: "Campaign created successfully!" });
+    // Hide snackbar and navigate after a delay
+    setTimeout(() => {
+      setSnackbar({ show: false, message: "" });
+      navigate("/advertising");
+    }, 3000);
   };
 
   return (
@@ -114,6 +120,8 @@ const CreateAd = () => {
           </section>
         </form>
       </main>
+
+      {snackbar.show && <div className="snackbar">{snackbar.message}</div>}
     </div>
   );
 };

@@ -1,0 +1,276 @@
+// Variables
+$post-bg: #fff;
+$border-color: #ddd;
+$primary-color: #0073b1;
+$hover-color: #005582;
+$text-color: #333;
+$light-gray: #f3f2ef;
+
+// Overall Page Styles
+.campaign-manager-page {
+  font-family: "Nunito", sans-serif;
+  color: $text-color;
+}
+
+/* Header Section */
+.campaign-manager-header {
+  position: relative;
+  background: linear-gradient(120deg, #0056a1, #004182);
+  padding: 80px 50px;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+
+  .header-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+
+  p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    color: #d3e3fc;
+  }
+}
+
+/* Floating Shapes (Same as Advertising) */
+.campaign-manager-header .shape {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: floatShapes 6s infinite ease-in-out;
+}
+
+.shape.one {
+  width: 150px;
+  height: 150px;
+  top: 20%;
+  left: 10%;
+  animation-duration: 6s;
+  animation-delay: 3s;
+}
+
+.shape.two {
+  width: 120px;
+  height: 120px;
+  top: 40%;
+  right: 5%;
+  animation-duration: 8s;
+  animation-delay: 1s;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.shape.three {
+  position: absolute;
+  bottom: 30%;
+  left: 70%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.shape.three::before,
+.shape.three::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.shape.three::before {
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+}
+
+.shape.three::after {
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+}
+
+@keyframes floatShapes {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-30px) translateX(30px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+/* Content Section */
+.campaign-manager-content {
+  padding: 40px 20px;
+}
+
+.section {
+  background: $post-bg;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInStaggered 1s ease-in-out forwards;
+  
+  h2 {
+    color: #004182;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+  }
+  
+  p {
+    color: $text-color;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+/* Campaign Item Styles */
+.campaign-item {
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: $primary-color;
+  }
+
+  p {
+    font-size: 14px;
+    color: $text-color;
+    margin-bottom: 8px;
+  }
+
+  .campaign-status {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  .campaign-status.active {
+    background: #d4edda;
+    color: #155724;
+  }
+
+  .campaign-status.paused {
+    background: #fff3cd;
+    color: #856404;
+  }
+
+  .campaign-status.completed {
+    background: #d1ecf1;
+    color: #0c5460;
+  }
+}
+
+/* Create Campaign Button */
+.create-campaign-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: $hover-color;
+  }
+}
+
+/* Animations */
+@keyframes fadeInStaggered {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+
+/* For screens up to 1024px (Laptops/Tablets) */
+@media (max-width: 1024px) {
+  .campaign-manager-header {
+    padding: 60px 30px;
+  }
+  .campaign-manager-content {
+    padding: 30px 15px;
+  }
+}
+
+/* For screens up to 768px (Tablets) */
+@media (max-width: 768px) {
+  .campaign-manager-header {
+    padding: 50px 20px;
+  }
+  .campaign-manager-content {
+    padding: 20px 10px;
+  }
+  .section {
+    padding: 20px;
+    margin-bottom: 15px;
+  }
+}
+
+/* For screens up to 480px (Mobile Phones) */
+@media (max-width: 480px) {
+  .campaign-manager-header {
+    padding: 40px 10px;
+  }
+  .campaign-manager-content {
+    padding: 15px 5px;
+  }
+  .section {
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+  .create-campaign-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
