@@ -23,6 +23,7 @@ import More from "./Pages/More/More";
 import CreateAd from "./Pages/Advertising/CreateAd/CreateAd";
 import CampaignManager from "./Pages/Advertising/Campaign/CampaignManager";
 import AudienceInsights from "./Pages/Advertising/Audience/AudienceInsights";
+import BillingPayments from "./Pages/Advertising/Billing/BillingPayments";
 
 
 
@@ -41,6 +42,7 @@ function App() {
       <Route path='/advertising' element={<Advertising/>}/>
       <Route path='/adchoices' element={<AdChoices/>}/>
       <Route path='/audience-insights' element={<AudienceInsights/>}/>
+      <Route path='/billing' element={<BillingPayments/>}/>
       <Route path='/create-ad' element={<CreateAd/>}/>
       <Route path='/campaign-manager' element={<CampaignManager/>}/>
       <Route path='/business' element={<BusinessServices/>}/>
