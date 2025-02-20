@@ -20,6 +20,7 @@ import Advertising from "./Pages/Advertising/Advertising";
 import AdChoices from "./Pages/AdChoices/AdChoices";
 import BusinessServices from "./Pages/BusinessServices/BusinessServices";
 import More from "./Pages/More/More";
+import CreateAd from "./Pages/Advertising/CreateAd/CreateAd";
 
 
 
@@ -37,7 +38,7 @@ function App() {
       <Route path='/accessibility' element={<Accessibility/>}/>
       <Route path='/advertising' element={<Advertising/>}/>
       <Route path='/adchoices' element={<AdChoices/>}/>
-      <Route path='/createad' element={<BusinessServices/>}/>
+      <Route path='/createad' element={<CreateAd/>}/>
       <Route path='/business' element={<BusinessServices/>}/>
       <Route path='/more' element={<More/>}/>
       <Route path='/help' element={<HelpCenter/>}/>

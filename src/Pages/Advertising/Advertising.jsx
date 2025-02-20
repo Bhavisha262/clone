@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Advertising.scss";
 
 const Advertising = () => {
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
 
   const adOptions = [
     {
@@ -49,7 +49,7 @@ const Advertising = () => {
           <div key={index} className="ad-card">
             <h3>{option.title}</h3>
             <p>{option.description}</p>
-            <button className="ad-btn" onClick={() => navigate(option.path)}>
+            <button className="ad-btn" onClick={() => Navigate(option.path)}>
               {option.buttonText}
             </button>
           </div>
