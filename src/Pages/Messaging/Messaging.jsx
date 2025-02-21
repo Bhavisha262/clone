@@ -161,7 +161,7 @@ const Messaging = () => {
                 <div className="conversation-header">
                   <img
                     className="avatar"
-                    src={activeConversation.avatar || "https://via.placeholder.com/40"}
+                    src={activeConversation.avatar || "https://xsgames.co/randomusers/assets/avatars/female/21.jpg"}
                     alt={activeConversation.sender}
                   />
                   <div className="conversation-sender">{activeConversation.sender}</div>
@@ -174,7 +174,7 @@ const Messaging = () => {
                     >
                       <img
                         className="avatar"
-                        src={threadMsg.avatar || "https://via.placeholder.com/40"}
+                        src={threadMsg.avatar || "https://xsgames.co/randomusers/assets/avatars/female/21.jpg"}
                         alt={threadMsg.sender}
                       />
                       <div className="message-content">
