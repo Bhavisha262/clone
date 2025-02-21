@@ -273,14 +273,14 @@
   }
   
   @media (max-width: 768px) {
-    .accessibility-header { height: 220px; }
+    .accessibility-header { height: 320px; }
     .header-content h1 { font-size: 1.8rem; }
     .header-content p { font-size: 0.9rem; }
     .section { padding: 20px; margin: 15px; }
   }
   
   @media (max-width: 576px) {
-    .accessibility-header { height: 200px; }
+    .accessibility-header { height: 300px; }
     .header-content h1 { font-size: 1.6rem; }
     .header-content p { font-size: 0.8rem; }
     .section { padding: 15px; margin: 10px; }
