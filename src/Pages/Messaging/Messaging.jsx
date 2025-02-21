@@ -43,29 +43,37 @@ const Messaging = () => {
         (msg) => msg.category === activeCategory.toLowerCase()
       );
     }
-    // Filter by search term on sender or subject
+    // Filter by search term on sender or lastMessage
     if (searchTerm) {
       filtered = filtered.filter(
         (msg) =>
           msg.sender.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          (msg.text && msg.text.toLowerCase().includes(searchTerm.toLowerCase()))
+          (msg.lastMessage && msg.lastMessage.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
     setFilteredMessages(filtered);
   };
 
-  // When a conversation is selected, simulate a thread (you would load real conversation data)
+  // When a conversation is selected, load its thread from msg.messages
   const handleSelectConversation = (msg) => {
     setActiveConversation(msg);
-    setConversationThread([
-      {
+    // Use the messages array if available, otherwise fallback to a single message using lastMessage
+    let thread = [];
+    if (msg.messages && msg.messages.length > 0) {
+      thread = msg.messages;
+    } else {
+      thread = [{
         id: msg.id,
         sender: msg.sender,
         avatar: msg.avatar,
-        text: msg.text,
+        text: msg.lastMessage,
         time: msg.time,
         read: msg.read
-      },
+      }];
+    }
+    // Append a default reply for demonstration purposes
+    setConversationThread([
+      ...thread,
       {
         id: 'reply-' + msg.id,
         sender: "You",
@@ -144,7 +152,7 @@ const Messaging = () => {
                   />
                   <div className="message-info">
                     <div className="message-sender">{msg.sender}</div>
-                    <div className="message-preview">{msg.text || "No text"}</div>
+                    <div className="message-preview">{msg.lastMessage || "No text"}</div>
                   </div>
                   <div className="message-time">{msg.time}</div>
                 </div>
