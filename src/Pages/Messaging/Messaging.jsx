@@ -5,11 +5,14 @@ import './Messaging.scss';
 const categories = ["Focused", "Unread", "My Connections", "InMail", "Starred"];
 
 const Messaging = () => {
-  // Local state for messages, active filter, and search term
+  // Local state for messages, active filter, search term, active conversation, thread, and composer text
   const [messages, setMessages] = useState([]);
   const [activeCategory, setActiveCategory] = useState("Focused");
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredMessages, setFilteredMessages] = useState([]);
+  const [activeConversation, setActiveConversation] = useState(null);
+  const [conversationThread, setConversationThread] = useState([]);
+  const [newMessageText, setNewMessageText] = useState("");
 
   // Fetch messages from backend when the component mounts
   useEffect(() => {
@@ -45,10 +48,48 @@ const Messaging = () => {
       filtered = filtered.filter(
         (msg) =>
           msg.sender.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          msg.subject.toLowerCase().includes(searchTerm.toLowerCase())
+          (msg.subject && msg.subject.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
     setFilteredMessages(filtered);
+  };
+
+  // When a conversation is selected, simulate a thread (you would load real conversation data)
+  const handleSelectConversation = (msg) => {
+    setActiveConversation(msg);
+    setConversationThread([
+      {
+        id: msg.id,
+        sender: msg.sender,
+        avatar: msg.avatar,
+        content: msg.content || msg.subject,
+        time: msg.time,
+        read: msg.read
+      },
+      {
+        id: 'reply-' + msg.id,
+        sender: "You",
+        avatar: "https://via.placeholder.com/40",
+        content: "Thanks for reaching out! Let's catch up soon.",
+        time: "Now",
+        read: true
+      }
+    ]);
+  };
+
+  // Handle sending a new message in the conversation detail view
+  const handleSendMessage = () => {
+    if (newMessageText.trim() === "") return;
+    const newMsg = {
+      id: Date.now(),
+      sender: "You",
+      avatar: "https://via.placeholder.com/40",
+      content: newMessageText,
+      time: "Now",
+      read: true
+    };
+    setConversationThread([...conversationThread, newMsg]);
+    setNewMessageText("");
   };
 
   return (
@@ -63,11 +104,9 @@ const Messaging = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <div className="header-icons">
-            {/* Three-dots icon */}
             <button className="icon-button" title="Options">
               <i className="fas fa-ellipsis-h"></i>
             </button>
-            {/* New Message icon */}
             <button className="icon-button new-message" title="New Message">
               <i className="fas fa-edit"></i>
             </button>
@@ -87,19 +126,87 @@ const Messaging = () => {
           ))}
         </div>
 
-        {/* List of Messages */}
-        <div className="messages-list">
-          {filteredMessages.length > 0 ? (
-            filteredMessages.map((msg) => (
-              <div key={msg.id} className="message-item">
-                <div className="message-sender">{msg.sender}</div>
-                <div className="message-subject">{msg.subject}</div>
-                <div className="message-time">{msg.time}</div>
-              </div>
-            ))
-          ) : (
-            <div className="no-messages">No messages found.</div>
-          )}
+        {/* Main body: Conversation list and Conversation detail */}
+        <div className="messaging-body">
+          {/* Left panel: Conversation List */}
+          <div className="conversation-list">
+            {filteredMessages.length > 0 ? (
+              filteredMessages.map((msg) => (
+                <div
+                  key={msg.id}
+                  className={`message-item ${!msg.read ? "unread" : ""}`}
+                  onClick={() => handleSelectConversation(msg)}
+                >
+                  <img
+                    className="avatar"
+                    src={msg.avatar || "https://via.placeholder.com/40"}
+                    alt={msg.sender}
+                  />
+                  <div className="message-info">
+                    <div className="message-sender">{msg.sender}</div>
+                    <div className="message-preview">{msg.subject || "No subject"}</div>
+                  </div>
+                  <div className="message-time">{msg.time}</div>
+                </div>
+              ))
+            ) : (
+              <div className="no-messages">No messages found.</div>
+            )}
+          </div>
+
+          {/* Right panel: Conversation Detail */}
+          <div className="conversation-detail">
+            {activeConversation ? (
+              <>
+                <div className="conversation-header">
+                  <img
+                    className="avatar"
+                    src={activeConversation.avatar || "https://via.placeholder.com/40"}
+                    alt={activeConversation.sender}
+                  />
+                  <div className="conversation-sender">{activeConversation.sender}</div>
+                </div>
+                <div className="conversation-thread">
+                  {conversationThread.map((threadMsg) => (
+                    <div
+                      key={threadMsg.id}
+                      className={`thread-message ${threadMsg.sender === "You" ? "sent" : "received"}`}
+                    >
+                      <img
+                        className="avatar"
+                        src={threadMsg.avatar || "https://via.placeholder.com/40"}
+                        alt={threadMsg.sender}
+                      />
+                      <div className="message-content">
+                        <div className="message-text">{threadMsg.content}</div>
+                        <div className="message-time">{threadMsg.time}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="message-composer">
+                  <button className="icon-button attach" title="Attach">
+                    <i className="fas fa-paperclip"></i>
+                  </button>
+                  <button className="icon-button emoji" title="Emoji">
+                    <i className="fas fa-smile"></i>
+                  </button>
+                  <input
+                    type="text"
+                    placeholder="Type a message..."
+                    value={newMessageText}
+                    onChange={(e) => setNewMessageText(e.target.value)}
+                    onKeyDown={(e) => { if(e.key === 'Enter') handleSendMessage(); }}
+                  />
+                  <button className="icon-button send" title="Send" onClick={handleSendMessage}>
+                    <i className="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="no-conversation">Select a conversation to view details.</div>
+            )}
+          </div>
         </div>
       </div>
     </div>
