@@ -147,7 +147,7 @@ const Messaging = () => {
                 >
                   <img
                     className="avatar"
-                    src={msg.avatar || "https://xsgames.co/randomusers/assets/avatars/female/21.jpg"}
+                    src={msg.avatar}
                     alt={msg.sender}
                   />
                   <div className="message-info">
