@@ -139,12 +139,12 @@ const Messaging = () => {
                 >
                   <img
                     className="avatar"
-                    src={msg.avatar || "https://via.placeholder.com/40"}
+                    src={msg.avatar || "https://xsgames.co/randomusers/assets/avatars/female/21.jpg"}
                     alt={msg.sender}
                   />
                   <div className="message-info">
                     <div className="message-sender">{msg.sender}</div>
-                    <div className="message-preview">{msg.subject || "No subject"}</div>
+                    <div className="message-preview">{msg.text || "No text"}</div>
                   </div>
                   <div className="message-time">{msg.time}</div>
                 </div>
