@@ -62,7 +62,7 @@ const Messaging = () => {
         id: msg.id,
         sender: msg.sender,
         avatar: msg.avatar,
-        content: msg.text || msg.text,
+        text: msg.text,
         time: msg.time,
         read: msg.read
       },
@@ -70,7 +70,7 @@ const Messaging = () => {
         id: 'reply-' + msg.id,
         sender: "You",
         avatar: "https://xsgames.co/randomusers/assets/avatars/female/21.jpg",
-        content: "Thanks for reaching out! Let's catch up soon.",
+        text: "Thanks for reaching out! Let's catch up soon.",
         time: "Now",
         read: true
       }
@@ -84,7 +84,7 @@ const Messaging = () => {
       id: Date.now(),
       sender: "You",
       avatar: "https://xsgames.co/randomusers/assets/avatars/female/21.jpg",
-      content: newMessageText,
+      text: newMessageText,
       time: "Now",
       read: true
     };
@@ -177,8 +177,8 @@ const Messaging = () => {
                         src={threadMsg.avatar || "https://xsgames.co/randomusers/assets/avatars/female/21.jpg"}
                         alt={threadMsg.sender}
                       />
-                      <div className="message-content">
-                        <div className="message-text">{threadMsg.content}</div>
+                      <div className="message-text">
+                        <div className="message-text">{threadMsg.text}</div>
                         <div className="message-time">{threadMsg.time}</div>
                       </div>
                     </div>
