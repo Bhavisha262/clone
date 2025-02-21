@@ -48,7 +48,7 @@ const Messaging = () => {
       filtered = filtered.filter(
         (msg) =>
           msg.sender.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          (msg.subject && msg.subject.toLowerCase().includes(searchTerm.toLowerCase()))
+          (msg.text && msg.text.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
     setFilteredMessages(filtered);
@@ -62,7 +62,7 @@ const Messaging = () => {
         id: msg.id,
         sender: msg.sender,
         avatar: msg.avatar,
-        content: msg.content || msg.subject,
+        content: msg.text || msg.text,
         time: msg.time,
         read: msg.read
       },
