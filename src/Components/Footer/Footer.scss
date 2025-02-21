@@ -18,28 +18,67 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 150px;
-    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'><path d='M0,40 Q300,80 600,40 T1200,40 V120 H0 Z' fill='%23ffffff55'/></svg>") no-repeat bottom;
+    height: 240px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 240'><path d='M0,100 C150,200 350,0 600,80 C850,160 1050,60 1200,100 L1200,240 L0,240 Z' fill='rgba(255,255,255,0.4)'/></svg>") no-repeat bottom;
     background-size: cover;
-    animation: wave-vertical 5s ease-in-out infinite;
-    z-index: 0;
+    animation: waveFloat 5s ease-in-out infinite;
+    z-index: 1;
+    opacity: 0.95;
   }
-
-  // Second wave layer (back)
+  
   &::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 150px;
-    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'><path d='M0,50 Q300,90 600,50 T1200,50 V120 H0 Z' fill='%23ffffff33'/></svg>") no-repeat bottom;
+    height: 220px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 220'><path d='M0,120 C200,180 400,40 600,100 C800,160 1000,80 1200,120 L1200,220 L0,220 Z' fill='rgba(255,255,255,0.4)'/></svg>") no-repeat bottom;
     background-size: cover;
-    animation: wave-vertical 7s ease-in-out infinite;
+    animation: waveFloat 7s ease-in-out infinite reverse;
     animation-delay: -2s;
     z-index: 0;
+    opacity: 0.9;
   }
-
+  
+  @keyframes waveFloat {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    &::before {
+      height: 200px;
+    }
+    &::after {
+      height: 180px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    &::before {
+      height: 160px;
+    }
+    &::after {
+      height: 140px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    &::before {
+      height: 140px;
+    }
+    &::after {
+      height: 120px;
+    }
+  }
+  
+  
   .footer-top {
     position: relative;
     z-index: 1;
@@ -104,12 +143,4 @@
   }
 }
 
-// Keyframes for vertical wave movement
-@keyframes wave-vertical {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
+

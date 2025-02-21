@@ -152,6 +152,7 @@
   position: relative;
   display: inline-block;
   animation: floatingText 3s infinite alternate ease-in-out;
+
 }
 
 .header-content p {
@@ -262,14 +263,14 @@ button:active::after {
 }
 
 @media (max-width: 768px) {
-  .about-header { height: 220px; }
+  .about-header { height: 320px; }
   .header-content h1 { font-size: 1.8rem; }
   .header-content p { font-size: 0.9rem; }
   .section { padding: 20px; margin: 15px; }
 }
 
 @media (max-width: 576px) {
-  .about-header { height: 200px; }
+  .about-header { height: 300px; }
   .header-content h1 { font-size: 1.6rem; }
   .header-content p { font-size: 0.8rem; }
   .section { padding: 15px; margin: 10px; }
