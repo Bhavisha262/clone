@@ -267,8 +267,10 @@
   
   /* Responsive Design */
   @media (max-width: 1200px) {
-    .help-center-header {
+    .accessibility-header {
       height: 280px;
+      padding: 80px 50px;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
     }
     .header-content h1 {
       font-size: 2.2rem;
@@ -278,17 +280,21 @@
     }
   }
   
+  /* Medium Devices (max-width: 992px) */
   @media (max-width: 992px) {
-    .help-center-header {
+    .accessibility-header {
       height: 250px;
+      padding: 80px 40px;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
     }
     .header-content h1 {
       font-size: 2rem;
     }
     .header-content p {
       font-size: 1rem;
+  
     }
-    .help-center-content {
+    .accessibility-content {
       padding: 30px 15px;
     }
     .section {
@@ -297,9 +303,12 @@
     }
   }
   
+  /* Small Devices (max-width: 768px) */
   @media (max-width: 768px) {
-    .help-center-header {
-      height: 220px;
+    .accessibility-header {
+      height: 320px;
+      padding: 70px 30px;
+      clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
     }
     .header-content h1 {
       font-size: 1.8rem;
@@ -313,9 +322,15 @@
     }
   }
   
+  /* Extra Small Devices (max-width: 576px) */
   @media (max-width: 576px) {
-    .help-center-header {
-      height: 200px;
+    .accessibility-header {
+      /* Use auto height to let the content determine the size and ensure nothing is cut off */
+      height: auto;
+      min-height: 300px;
+      padding: 60px 20px;
+      /* Soften the diagonal cut for increased content visibility */
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
     }
     .header-content h1 {
       font-size: 1.6rem;
@@ -328,4 +343,4 @@
       margin: 10px;
     }
   }
- 
+  
