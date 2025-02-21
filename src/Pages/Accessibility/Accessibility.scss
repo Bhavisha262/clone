@@ -1,288 +1,343 @@
 .accessibility-page {
-    font-family: "Nunito", sans-serif;
-    color: black;
+  font-family: "Nunito", sans-serif;
+  color: black;
+}
+
+/* Header Section */
+.accessibility-header {
+  position: relative;
+  background: linear-gradient(120deg, #820050, #800026); // Stylish LinkedIn color theme
+  padding: 80px 50px;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  font-family: "Nunito", sans-serif;
+  /* Diagonal Cut Effect */
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+}
+
+/* Floating Overlapping Layers */
+.accessibility-header::before,
+.accessibility-header::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.accessibility-header::before {
+  top: -20px;
+  left: 0;
+  transform: skewY(-4deg);
+}
+
+.accessibility-header::after {
+  bottom: -20px;
+  left: 0;
+  transform: skewY(4deg);
+}
+
+/* Glowing Floating Shapes */
+.accessibility-header .shape {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: floatShapes 6s infinite ease-in-out;
+}
+
+.shape.one {
+  width: 150px;
+  height: 150px;
+  top: 20%;
+  left: 10%;
+  animation-duration: 6s;
+  animation-delay: 3s;
+}
+
+.shape.two {
+  width: 120px;
+  height: 120px;
+  top: 40%;
+  right: 5%;
+  animation-duration: 8s;
+  animation-delay: 1s;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.shape.three {
+  position: absolute;
+  bottom: 30%;
+  left: 70%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.shape.three::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.shape.three::after {
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Keyframes */
+@keyframes floatShapes {
+  0% {
+    transform: translateY(0) translateX(0);
   }
-  
-  /* Header Section */
+  50% {
+    transform: translateY(-30px) translateX(30px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+/* Header Content */
+.accessibility-header .header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.accessibility-header h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: lemonchiffon;
+}
+
+.accessibility-header p {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  color: lightpink;
+}
+
+.header-content h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+  animation: floatingText 3s infinite alternate ease-in-out;
+}
+
+.header-content p {
+  font-size: 1.2rem;
+  margin: 10px 0 0 0;
+  opacity: 0;
+  animation: fadeInText 1.5s ease-in-out forwards;
+  animation-delay: 0.5s;
+}
+
+/* Content Section */
+.accessibility-content {
+  padding: 40px 20px;
+}
+
+.section {
+  background: #fff;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInStaggered 1s ease-in-out forwards;
+}
+
+.section h2 {
+  color: #004182;
+}
+
+.section p {
+  color: black;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 25px;
+  display: inline-block;
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.toggle-switch .slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ccc;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.toggle-switch input:checked + .slider {
+  background: #004182;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  top: 2px;
+  left: 2px;
+  transition: 0.4s;
+}
+
+input:checked + .slider::before {
+  transform: translateX(25px);
+}
+
+/* Select Dropdown */
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Animations */
+@keyframes fadeInStaggered {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* High Contrast Mode */
+.high-contrast {
+  background: #000;
+  color: yellow;
+}
+
+.high-contrast .section {
+  background: #222;
+  color: yellow;
+  border: 2px solid yellow;
+}
+
+.high-contrast .section h2 {
+  color: cyan;
+}
+
+.high-contrast .section p {
+  color: chocolate;
+}
+
+/* Responsive Media Queries */
+
+/* Large Devices (max-width: 1200px) */
+@media (max-width: 1200px) {
   .accessibility-header {
-    position: relative;
-    background: linear-gradient(120deg, #820050, #800026); // Stylish LinkedIn color theme
+    height: 280px;
     padding: 80px 50px;
-    color: white;
-    text-align: center;
-    overflow: hidden;
-    font-family: "Nunito", sans-serif;
-    /* Diagonal Cut Effect */
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
   }
-  
-  /* Floating Overlapping Layers */
-  .accessibility-header::before,
-  .accessibility-header::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 120px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+  .header-content h1 {
+    font-size: 2.2rem;
   }
-  
-  .accessibility-header::before {
-    top: -20px;
-    left: 0;
-    transform: skewY(-4deg);
+  .header-content p {
+    font-size: 1.1rem;
   }
-  
-  .accessibility-header::after {
-    bottom: -20px;
-    left: 0;
-    transform: skewY(4deg);
-  }
-  
-  /* Glowing Floating Shapes */
-  .accessibility-header .shape {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    animation: floatShapes 6s infinite ease-in-out;
-  }
-  
-  .shape.one {
-    width: 150px;
-    height: 150px;
-    top: 20%;
-    left: 10%;
-    animation-duration: 6s;
-    animation-delay: 3s;
-  }
-  
-  .shape.two {
-    width: 120px;
-    height: 120px;
-    top: 40%;
-    right: 5%;
-    animation-duration: 8s;
-    animation-delay: 1s;
-    clip-path: polygon(
-      50% 0%,
-      61% 35%,
-      98% 35%,
-      68% 57%,
-      79% 91%,
-      50% 70%,
-      21% 91%,
-      32% 57%,
-      2% 35%,
-      39% 35%
-    );
-    background: rgba(255, 255, 255, 0.4);
-  }
-  
-  
-  .shape.three {
-    position: absolute;
-    bottom: 30%;
-    left: 70%;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: transparent;
-    box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.3);
-  }
-  
-  .shape.three::before {
-    content: "";
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    width: 80%;
-    height: 80%;
-    border-radius: 50%;
-    box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.3);
-  }
-  
-  .shape.three::after {
-    content: "";
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    width: 50%;
-    height: 50%;
-    border-radius: 50%;
-    box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.3);
-  }
-  
-  
-  
-  @keyframes floatShapes {
-    0% {
-      transform: translateY(0) translateX(0);
-    }
-    50% {
-      transform: translateY(-30px) translateX(30px);
-    }
-    100% {
-      transform: translateY(0) translateX(0);
-    }
-  }
-  .accessibility-header .header-content {
-    position: relative;
-    z-index: 1;
-  }
-  
-  .accessibility-header h1 {
-    font-size: 3rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: lemonchiffon;
-  }
-  
-  .accessibility-header p {
-    font-size: 1.2rem;
-    opacity: 0.8;
-    color: lightpink;
+}
+
+/* Medium Devices (max-width: 992px) */
+@media (max-width: 992px) {
+  .accessibility-header {
+    height: 250px;
+    padding: 80px 40px;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
   }
   .header-content h1 {
-    font-size: 2.5rem;
-    margin: 0;
-    position: relative;
-    display: inline-block;
-    animation: floatingText 3s infinite alternate ease-in-out;
+    font-size: 2rem;
   }
-  
   .header-content p {
-    font-size: 1.2rem;
-    margin: 10px 0 0 0;
-    opacity: 0;
-    animation: fadeInText 1.5s ease-in-out forwards;
-    animation-delay: 0.5s;
-  }
-  
-  /* Content Section */
-  .accessibility-content {
-    padding: 40px 20px;
-  }
-  
-  .section {
-    background: #fff;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transform: translateY(40px);
-    animation: fadeInStaggered 1s ease-in-out forwards;
-    
-    h2 {
-      color: #004182;
-    }
-    
-    p {
-      color: black;
-    }
-  }
-  
-  /* Toggle Switch */
-  .toggle-switch {
-    position: relative;
-    width: 50px;
-    height: 25px;
-    display: inline-block;
-  }
-  
-  .toggle-switch input {
-    display: none;
-  }
-  
-  .toggle-switch .slider {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #ccc;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: 0.4s;
-  }
-  
-  .toggle-switch input:checked + .slider {
-    background: #004182;
-  }
-  
-  .slider::before {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: white;
-    top: 2px;
-    left: 2px;
-    transition: 0.4s;
-  }
-  
-  input:checked + .slider::before {
-    transform: translateX(25px);
-  }
-  
-  /* Select Dropdown */
-  select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
     font-size: 1rem;
-  }
-  
-  /* Animations */
-  @keyframes fadeInStaggered {
-    0% { opacity: 0; transform: translateY(40px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  
-  /* High Contrast Mode */
-  .high-contrast {
-    background: #000;
-    color: yellow;
-  
-    .section {
-      background: #222;
-      color: yellow;
-      border: 2px solid yellow;
 
-      h2{
-        color: cyan;
-      }
-      p{
-        color: chocolate;
-      }
-    }
   }
-  @media (max-width: 1200px) {
-    .accessibility-header { height: 280px; }
-    .header-content h1 { font-size: 2.2rem; }
-    .header-content p { font-size: 1.1rem; }
+  .accessibility-content {
+    padding: 30px 15px;
   }
-  
-  @media (max-width: 992px) {
-    .accessibility-header { height: 250px; }
-    .header-content h1 { font-size: 2rem; }
-    .header-content p { font-size: 1rem; }
-    .accessibility-content { padding: 30px 15px; }
-    .section { margin: 20px 10px; padding: 25px; }
+  .section {
+    margin: 20px 10px;
+    padding: 25px;
   }
-  
-  @media (max-width: 768px) {
-    .accessibility-header { height: 320px; }
-    .header-content h1 { font-size: 1.8rem; }
-    .header-content p { font-size: 0.9rem; }
-    .section { padding: 20px; margin: 15px; }
+}
+
+/* Small Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .accessibility-header {
+    height: 320px;
+    padding: 70px 30px;
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
   }
-  
-  @media (max-width: 576px) {
-    .accessibility-header { height: 300px; }
-    .header-content h1 { font-size: 1.6rem;  }
-    .header-content p { font-size: 0.8rem; }
-    .section { padding: 15px; margin: 10px; }
+  .header-content h1 {
+    font-size: 1.8rem;
   }
-  
+  .header-content p {
+    font-size: 0.9rem;
+  }
+  .section {
+    padding: 20px;
+    margin: 15px;
+  }
+}
+
+/* Extra Small Devices (max-width: 576px) */
+@media (max-width: 576px) {
+  .accessibility-header {
+    /* Use auto height to let the content determine the size and ensure nothing is cut off */
+    height: auto;
+    min-height: 300px;
+    padding: 60px 20px;
+    /* Soften the diagonal cut for increased content visibility */
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+  }
+  .header-content h1 {
+    font-size: 1.6rem;
+  }
+  .header-content p {
+    font-size: 0.8rem;
+  }
+  .section {
+    padding: 15px;
+    margin: 10px;
+  }
+}

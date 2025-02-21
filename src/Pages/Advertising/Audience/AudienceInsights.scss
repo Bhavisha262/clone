@@ -194,44 +194,81 @@
   }
   
   /* Responsive Design */
-  @media (max-width: 1024px) {
+  @media (max-width: 1200px) {
     .audience-insights-header {
-      padding: 60px 30px;
+      height: 280px;
+      padding: 80px 50px;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+    }
+    .header-content h1 {
+      font-size: 2.2rem;
+    }
+    .header-content p {
+      font-size: 1.1rem;
+    }
+  }
+  
+  /* Medium Devices (max-width: 992px) */
+  @media (max-width: 992px) {
+    .audience-insights-header {
+      height: 250px;
+      padding: 80px 40px;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+    }
+    .header-content h1 {
+      font-size: 2rem;
+    }
+    .header-content p {
+      font-size: 1rem;
+  
     }
     .audience-insights-content {
       padding: 30px 15px;
     }
+    .section {
+      margin: 20px 10px;
+      padding: 25px;
+    }
   }
   
+  /* Small Devices (max-width: 768px) */
   @media (max-width: 768px) {
     .audience-insights-header {
-      padding: 50px 20px;
+      height: 320px;
+      padding: 70px 30px;
+      clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
     }
-    .audience-insights-content {
-      padding: 20px 10px;
+    .header-content h1 {
+      font-size: 1.8rem;
+    }
+    .header-content p {
+      font-size: 0.9rem;
     }
     .section {
       padding: 20px;
-      margin-bottom: 15px;
+      margin: 15px;
     }
   }
   
-  @media (max-width: 480px) {
+  /* Extra Small Devices (max-width: 576px) */
+  @media (max-width: 576px) {
     .audience-insights-header {
-      padding: 40px 10px;
+      /* Use auto height to let the content determine the size and ensure nothing is cut off */
+      height: auto;
+      min-height: 300px;
+      padding: 60px 20px;
+      /* Soften the diagonal cut for increased content visibility */
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
     }
-    .audience-insights-content {
-      padding: 15px 5px;
+    .header-content h1 {
+      font-size: 1.6rem;
+    }
+    .header-content p {
+      font-size: 0.8rem;
     }
     .section {
       padding: 15px;
-      margin-bottom: 10px;
-    }
-    .audience-insights-header h1 {
-      font-size: 1.6rem;
-    }
-    .audience-insights-header p {
-      font-size: 0.8rem;
+      margin: 10px;
     }
   }
   
