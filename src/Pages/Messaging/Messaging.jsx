@@ -69,7 +69,7 @@ const Messaging = () => {
       {
         id: 'reply-' + msg.id,
         sender: "You",
-        avatar: "https://via.placeholder.com/40",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/female/21.jpg",
         content: "Thanks for reaching out! Let's catch up soon.",
         time: "Now",
         read: true
@@ -83,7 +83,7 @@ const Messaging = () => {
     const newMsg = {
       id: Date.now(),
       sender: "You",
-      avatar: "https://via.placeholder.com/40",
+      avatar: "https://xsgames.co/randomusers/assets/avatars/female/21.jpg",
       content: newMessageText,
       time: "Now",
       read: true
