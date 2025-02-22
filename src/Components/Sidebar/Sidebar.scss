@@ -69,6 +69,9 @@
     &:hover {
       transform: scale(1.1);
     }
+    @media screen and (max-width: 400px) {
+      font-size: 18px;
+    }
   }
   
   /* Push Content When Sidebar Opens */
