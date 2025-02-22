@@ -182,7 +182,7 @@ const Messaging = () => {
                     >
                       <img
                         className="avatar"
-                        src={threadMsg.avatar}
+                        src={threadMsg.avatar || activeConversation.avatar}
                         alt={threadMsg.sender}
                       />
                       <div className="message-text">
