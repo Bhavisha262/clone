@@ -58,31 +58,18 @@ const Messaging = () => {
   const handleSelectConversation = (msg) => {
     setActiveConversation(msg);
     // Use the messages array if available, otherwise fallback to a single message using lastMessage
-    let thread = [];
     if (msg.messages && msg.messages.length > 0) {
-      thread = msg.messages;
+      setConversationThread(msg.messages);
     } else {
-      thread = [{
+      setConversationThread([{
         id: msg.id,
         sender: msg.sender,
         avatar: msg.avatar,
         text: msg.lastMessage,
         time: msg.time,
         read: msg.read
-      }];
+      }]);
     }
-    // Append a default reply for demonstration purposes
-    setConversationThread([
-      ...thread,
-      {
-        id: 'reply-' + msg.id,
-        sender: "You",
-        avatar: "https://xsgames.co/randomusers/assets/avatars/female/21.jpg",
-        text: "Thanks for reaching out! Let's catch up soon.",
-        time: "Now",
-        read: true
-      }
-    ]);
   };
 
   // Handle sending a new message in the conversation detail view
@@ -91,6 +78,7 @@ const Messaging = () => {
     const newMsg = {
       id: Date.now(),
       sender: "You",
+      // Use a default avatar for "You" messages if one is not provided in the JSON
       avatar: "https://xsgames.co/randomusers/assets/avatars/female/21.jpg",
       text: newMessageText,
       time: "Now",
@@ -182,7 +170,7 @@ const Messaging = () => {
                     >
                       <img
                         className="avatar"
-                        src={threadMsg.avatar || activeConversation.avatar}
+                        src={threadMsg.avatar ? threadMsg.avatar : (threadMsg.sender === "You" ? "https://xsgames.co/randomusers/assets/avatars/female/21.jpg" : activeConversation.avatar)}
                         alt={threadMsg.sender}
                       />
                       <div className="message-text">

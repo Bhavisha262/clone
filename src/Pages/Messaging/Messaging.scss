@@ -30,7 +30,6 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   animation: fadeIn 0.5s ease-in-out;
   margin: 10px;
-  font-family: "Nunito", serif;
   transition: transform $transition-speed ease;
 
   &:hover {
@@ -57,14 +56,12 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   align-items: center;
   padding: 10px 15px;
   border-bottom: 1px solid $border-color;
-  font-family: "Nunito", serif;
 
   input {
     flex: 1;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-family: "Nunito", serif;
     outline: none;
     transition: border-color $transition-speed, box-shadow $transition-speed;
 
@@ -98,7 +95,6 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   .new-message {
     color: $primary-color;
-    font-family: "Nunito", serif;
   }
 }
 
@@ -108,7 +104,6 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   justify-content: space-around;
   border-bottom: 1px solid $border-color;
   background-color: $bg-color;
-  font-family: "Nunito", serif;
 
   .category-button {
     flex: 1;
@@ -120,7 +115,6 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: black;
     text-transform: capitalize;
     outline: none;
-    font-family: "Nunito", serif;
     transition: background-color $transition-speed, color $transition-speed;
 
     &:hover {
@@ -140,21 +134,18 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   height: 500px;
   overflow: hidden;
-  font-family: "Nunito", serif;
 }
 
 .conversation-list {
   width: 35%;
   border-right: 1px solid $border-color;
   overflow-y: auto;
-  font-family: "Nunito", serif;
 
   .message-item {
     display: flex;
     align-items: center;
     padding: 10px;
     cursor: pointer;
-    font-family: "Nunito", serif;
     transition: background-color $transition-speed;
 
     &:hover {
@@ -178,22 +169,18 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
     .message-info {
       flex: 1;
-      font-family: "Nunito", serif;
       .message-sender {
         font-size: 16px;
-        font-family: "Nunito", serif;
       }
       .message-preview {
         font-size: 14px;
         color: $secondary-color;
-        font-family: "Nunito", serif;
       }
     }
 
     .message-time {
       font-size: 12px;
       color: $secondary-color;
-      font-family: "Nunito", serif;
     }
   }
 }
@@ -201,7 +188,6 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 .conversation-detail {
   width: 65%;
   display: flex;
-  font-family: "Nunito", serif;
   flex-direction: column;
 
   .conversation-header {
@@ -209,7 +195,6 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid $border-color;
-    font-family: "Nunito", serif;
 
     .avatar {
       width: 40px;
@@ -221,7 +206,6 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     .conversation-sender {
       font-size: 18px;
       font-weight: bold;
-      font-family: "Nunito", serif;
     }
   }
 
@@ -229,21 +213,13 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     flex: 1;
     overflow-y: auto;
     padding: 10px;
-    font-family: "Nunito", serif;
 
     .thread-message {
       display: flex;
       margin-bottom: 15px;
-      font-family: "Nunito", serif;
 
       &.sent {
         flex-direction: row-reverse;
-        font-family: "Nunito", serif;
-
-        .message-content {
-          text-align: right;
-          font-family: "Nunito", serif;
-        }
       }
 
       .avatar {
@@ -253,24 +229,21 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         margin: 0 10px;
       }
 
-      .message-content {
+      .message-text {
         max-width: 70%;
         background-color: $bg-color;
         padding: 10px;
         border-radius: 8px;
-        font-family: "Nunito", serif;
         box-shadow: $box-shadow;
 
         .message-text {
           margin-bottom: 5px;
-          font-family: "Nunito", serif;
         }
 
         .message-time {
           font-size: 12px;
           color: $secondary-color;
           text-align: right;
-          font-family: "Nunito", serif;
         }
       }
     }
@@ -279,7 +252,6 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   .message-composer {
     display: flex;
     align-items: center;
-    font-family: "Nunito", serif;
     padding: 10px;
     border-top: 1px solid $border-color;
 
@@ -287,7 +259,6 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       flex: 1;
       padding: 8px;
       border: 1px solid #ddd;
-      font-family: "Nunito", serif;
       border-radius: 4px;
       outline: none;
       margin: 0 10px;
@@ -305,7 +276,6 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       border: none;
       cursor: pointer;
       color: $secondary-color;
-      
       transition: color $transition-speed, transform $transition-speed;
 
       &:hover {
@@ -325,9 +295,7 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 .no-conversation {
   text-align: center;
   padding: 20px;
-  font-family: "Nunito", serif;
   color: #888;
-  font-family: "Nunito", serif;
 }
 
 /* Responsive adjustments for smaller screens */
