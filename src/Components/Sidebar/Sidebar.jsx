@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { FaBars, FaTimes, FaHome, FaUserFriends, FaBriefcase, FaComments, FaBell } from "react-icons/fa"; 
 import "./Sidebar.scss";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const Navigate = useNavigate();
 
   // Toggle Sidebar Visibility
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
-
+   
   return (
     <>
       {/* Menu Button */}
@@ -20,11 +22,11 @@ const Sidebar = () => {
       {/* Sidebar */}
       <div className={`sidebar ${isOpen ? "open" : ""}`}>
         <ul className="sidebar-menu">
-          <li><FaHome className="icon" /> <span>Home</span></li>
-          <li><FaUserFriends className="icon" /> <span>My Network</span></li>
-          <li><FaBriefcase className="icon" /> <span>Jobs</span></li>
-          <li><FaComments className="icon" /> <span>Messaging</span></li>
-          <li><FaBell className="icon" /> <span>Notifications</span></li>
+          <li onClick={() => Navigate('/') || setIsOpen(false)}><FaHome className="icon" /> <span>Home</span></li>
+          <li onClick={() => Navigate('/network') || setIsOpen(false)}><FaUserFriends className="icon" /> <span>My Network</span></li>
+          <li onClick={() => Navigate('/jobs') || setIsOpen(false)}><FaBriefcase className="icon" /> <span>Jobs</span></li>
+          <li onClick={() => Navigate('/messaging') || setIsOpen(false)}><FaComments className="icon" /> <span>Messaging</span></li>
+          <li onClick={() => Navigate('/notifications') || setIsOpen(false)}><FaBell className="icon" /> <span>Notifications</span></li>
         </ul>
       </div>
     </>
