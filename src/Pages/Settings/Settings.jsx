@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Settings.scss";
 import SignIn from "../SignIn/SignIn";
-import SignOut from "../SignOut/SignOut";
 import Register from "../Register/Register";
 
 const Settings = () => {
