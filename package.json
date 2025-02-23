@@ -21,6 +21,7 @@
     "react-scroll-to-top": "^3.0.0",
     "react-toastify": "^11.0.3",
     "sass": "^1.83.4",
+    "spinners-react": "^1.0.10",
     "yup": "^1.6.1"
   },
   "devDependencies": {
