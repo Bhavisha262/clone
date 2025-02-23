@@ -7,7 +7,7 @@ const Loader = (props) => {
   return (
     <div className='loading'>
 
-  <SpinnerDiamond size={50} thickness={100} speed={100} color="#800026" secondaryColor="rgba(0, 0, 0, 0.44)" />
+  <SpinnerDiamond size={50} thickness={100} speed={100} color="#004182" secondaryColor="rgba(0, 0, 0, 0.44)" />
   <h2>{props.title}</h2>
   <img src={props.src} alt={props.alt}/>
     </div>
