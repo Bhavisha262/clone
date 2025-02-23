@@ -24,15 +24,23 @@ import CreateAd from "./Pages/Advertising/CreateAd/CreateAd";
 import CampaignManager from "./Pages/Advertising/Campaign/CampaignManager";
 import AudienceInsights from "./Pages/Advertising/Audience/AudienceInsights";
 import BillingPayments from "./Pages/Advertising/Billing/BillingPayments";
+import Loader from "./Components/Loader/Loader";
 
 
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+    setIsLoading(false);
+    }, 2000);
+    }, []);
   return (
+    isLoading ?
+    <Loader title="Welcome to World Of Jobs" src="https://tenor.com/en-IN/view/our-time-is-now-our-time-is-now-for-jobs-unemployed-unemployment-protest-gif-19187242" alt=""/>:
     <>
     <BrowserRouter>
-    
-
     <GotoTop/>
       <Header/>
       <Routes>
