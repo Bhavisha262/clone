@@ -29,6 +29,7 @@ import { useEffect, useState } from "react";
 import gifjob from "../src/assets/our-time-is-now-our-time-is-now-for-jobs.gif"
 
 
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
